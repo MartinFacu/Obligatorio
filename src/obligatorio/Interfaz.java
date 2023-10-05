@@ -40,21 +40,20 @@ public class Interfaz {
             System.out.print("  ");
                 imprimirMasYGuiones(matImprimir);
                 System.out.println("");
-                System.out.print(i+1 + " | ");
+                System.out.print(i+1 + " |");
                 for(int j=0; j< matImprimir[0].length;j++){
                     String datoActual=matImprimir[i][j];
                     String segundoCaracter=datoActual.charAt(1)+"";
                     if("R".equals(segundoCaracter)){
                         System.out.print("\u001B[31m");
-                        System.out.print(matImprimir[i][j]);
+                        System.out.print(" "+datoActual.charAt(0));
                         System.out.print("\u001B[0m");
                     }else{
                         System.out.print("\u001B[34m");
-                        System.out.print(matImprimir[i][j]);
+                        System.out.print(" "+datoActual.charAt(0));
                         System.out.print("\u001B[0m");
                     }
                     System.out.print(" |");
-                    System.out.print(matImprimir[i][j] + " | ");
                 }
                 System.out.println("");
         }
@@ -79,7 +78,6 @@ public class Interfaz {
         System.out.println("Que desea hacer ahora?");
         String si=in.nextLine();
         String dato=si.toUpperCase();
-        System.out.println(dato);
         return dato;
     }
     
