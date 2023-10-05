@@ -9,15 +9,28 @@ import java.util.*;
 public class Obligatorio {
 
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<String> movimientos = new ArrayList<String>();
+        Scanner in = new Scanner(System.in);
+        String[][]tablero=usoTableroPredeterminado();
+        ArrayList<int[]> movimientos = new ArrayList<int[]>();
         boolean inicio=(Interfaz.inicioJuego());
         if(!inicio){
 
         }else{
-            if(Interfaz.tableroElegido()){
-                Interfaz.imprimir(LeoTablero1());
+            String opcion=Interfaz.tableroJugar();
+            if(opcion.equalsIgnoreCase("a")){
+                tablero=LeoTableroDatosTxt();
+                Interfaz.imprimir(tablero);
+                int nivel=in.nextInt();
+                in.nextLine();
+                movimientos = creadorNivel(nivel,tablero.length,tablero[0].length);
             }else{
-                Interfaz.imprimir(generoTableroRandom()); 
+                if(opcion.equalsIgnoreCase("b")){
+                    Interfaz.imprimir(tablero); 
+                }else{
+                    tablero=generoTableroRandom();
+                    Interfaz.imprimir(tablero); 
+                }
+                
             }
         }
         boolean deseo=true;
@@ -47,6 +60,7 @@ public class Obligatorio {
     
     public static String [][] generoTableroRandom() throws FileNotFoundException {
         String[] posibles = {"-", "/" , "\\", "|"};
+        String[] posiblesColores = {"A", "R"};
         Scanner in = new Scanner(System.in);
         int filas = in.nextInt();
         in.nextLine();
@@ -58,13 +72,13 @@ public class Obligatorio {
         // Leer y almacenar los datos en la matriz
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                tableroRandom[i][j] = posibles[(int) (Math.random() * 4)];
+                tableroRandom[i][j] = posibles[(int) (Math.random() * 4)] + posiblesColores[(int) (Math.random() * 2)];
             }
         }
         return tableroRandom;
     }
     
-    public static String [][] LeoTablero1() throws FileNotFoundException {
+    public static String [][] LeoTableroDatosTxt() throws FileNotFoundException {
            // Crear un Scanner para leer el archivo
         Scanner input = new Scanner(new File(".\\Test\\datos.txt"));
 
@@ -89,6 +103,43 @@ public class Obligatorio {
         // Cerrar el Scanner
         input.close(); 
         return tablero1;
+    }
+    
+    public static String [][] usoTableroPredeterminado() throws FileNotFoundException {
+        String[][] tableroPredeterminado = {
+            {"|R", "\\A", "|R", "\\R", "/R", "|R"},
+            {"-R", "/R", "-A", "\\R", "\\R", "/R"},
+            {"\\R", "\\R", "/R", "-A", "\\R", "-R"},
+            {"-R", "-R", "\\R", "-R", "|A", "-R"},
+            {"\\R", "/R", "|R", "-R", "/R", "|A"}
+       };
+        return tableroPredeterminado;
+    }
+    public static ArrayList<int[]> creadorNivel(int nivel, int filas, int col){
+        ArrayList<int[]> muestro = new ArrayList<int[]>();
+        for(int i = 0; i < muestro.size(); i = i+1){
+            boolean esta = true;
+            while(esta){
+                int[] movimiento = new int[2];
+                int randomNum1 = (int) Math.random() * (filas);
+                int randomNum2 = (int) Math.random() * (col); 
+                movimiento[1] = randomNum1;
+                movimiento[2] = randomNum2;
+            
+                for(int j = 0; j < muestro.size(); j++){
+                    int[] elem = muestro.get(j);
+                    if(elem[1] == randomNum1 && elem[2] == randomNum2){
+                        esta = true;
+                    }
+                }
+                if(esta == false){
+                    esta = false;
+                    muestro.add(movimiento);
+                }
+        }
+        }
+        
+        return muestro;
     }
     
 }

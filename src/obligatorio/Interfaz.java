@@ -62,13 +62,22 @@ public class Interfaz {
         System.out.println("");
     }
     
-    public static boolean tableroElegido(){
+    public static String tableroJugar(){
         Scanner in = new Scanner(System.in);
-        System.out.println("Desea el tablero predeterminado?");
-        String deseo = in.nextLine();
-        boolean muestro = true;
-        if(deseo.equalsIgnoreCase("No")){
-            muestro = false;
+        System.out.println("¿De que manera desea jugar?");
+        System.out.println("a) Tablero externo");
+        System.out.println("b) Tablero predefinido");
+        System.out.println("c) Tablero al azar");
+        boolean bool = false;
+        String muestro = "";
+        while(bool == false){
+            String deseo = in.nextLine();
+            if(deseo.equalsIgnoreCase("a") || deseo.equalsIgnoreCase("b") || deseo.equalsIgnoreCase("c")){
+                muestro = deseo;
+                bool = true;
+            }else{
+                System.out.println("Ingrese opcion a, b o c");
+            }
         }
         return muestro;
     }
