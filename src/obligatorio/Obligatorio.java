@@ -270,6 +270,32 @@ public class Obligatorio {
         
             return matRetorno;
         }
+    
+    public static void llamarCambio(int[] coord, String[][] mat){
+        int x = coord[0];
+        int y = coord[1];
+        
+        String datoActual = mat[x][y];
+        String primerCaracter = datoActual.charAt(0)+"";
+        
+        switch (primerCaracter){
+            case "-":
+                cambioHorizontal(mat, x);
+                break;
+            
+            case "|":
+                cambioVertical(mat, y);
+                break;
+                
+            case "\\":
+                cambioDiagonalDerecha(mat, x, y);
+                break;
+                
+            case "/":
+                cambioDiagonalIzquierda(mat, x, y);
+                break;
+        }
+    }
     }
     
 
