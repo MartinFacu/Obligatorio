@@ -115,10 +115,9 @@ public class Interfaz {
         return dato;
     }
     
-    public static int[] pedirCordenadas(String cordenada1){ 
-        Scanner in = new Scanner(System.in);
+    public static int[] pedirCordenadas(String cordenada1){
         int cord1=Integer.parseInt(cordenada1);
-        
+        System.out.println("Ingrese cordenada 2");
         int cord2=pedirEntero();
         int[] cordenadas={cord1, cord2};
         return cordenadas;
