@@ -199,6 +199,77 @@ public class Obligatorio {
             return matRetorno;
         }
     
-}
+    //Cambio color \
+    public static String[][] cambioDiagonalDerecha(String[][] mat, int x, int y){
+        String[][] matRetorno = new String[mat.length][mat[0].length];
+        int empiezoX;
+        int empiezoY;
+        if(y-x > -1){
+            empiezoX = 0;
+            empiezoY = y-x;
+        }else{
+            empiezoX = x;
+            empiezoY = y;
+        }
+        
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                String datoActual=mat[i][j];
+                String primerCaracter=datoActual.charAt(0)+"";
+                String segundoCaracter=datoActual.charAt(1)+"";
+                
+                if(i == empiezoX && j == empiezoY){
+                    if("R".equals(segundoCaracter)){
+                        matRetorno[i][j] = primerCaracter + "A";
+                    }else{
+                        matRetorno[i][j] = primerCaracter + "R";
+                    }
+                }else{
+                    matRetorno[i][j] = datoActual;
+                }
+            }
+            empiezoX++;
+            empiezoY++;
+            }
+        
+            return matRetorno;
+        }
+    
+    //Cambio color /
+    public static String[][] cambioDiagonalIzquierda(String[][] mat, int x, int y){
+        String[][] matRetorno = new String[mat.length][mat[0].length];
+        int empiezoX;
+        int empiezoY;
+        if(y-x > -1){
+            empiezoX = 0;
+            empiezoY = y+x;
+        }else{
+            empiezoX = x;
+            empiezoY = y;
+        }
+        
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                String datoActual=mat[i][j];
+                String primerCaracter=datoActual.charAt(0)+"";
+                String segundoCaracter=datoActual.charAt(1)+"";
+                
+                if(i == empiezoX && j == empiezoY){
+                    if("R".equals(segundoCaracter)){
+                        matRetorno[i][j] = primerCaracter + "A";
+                    }else{
+                        matRetorno[i][j] = primerCaracter + "R";
+                    }
+                }else{
+                    matRetorno[i][j] = datoActual;
+                }
+            }
+            empiezoX++;
+            empiezoY--;
+            }
+        
+            return matRetorno;
+        }
+    }
     
 
