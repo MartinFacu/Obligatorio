@@ -15,10 +15,9 @@ public class Obligatorio {
         }else{
             String opcion=Interfaz.tableroJugar();
             if(opcion.equalsIgnoreCase("a")){
-                tablero=LeoTableroDatosTxt();
+            tablero = LeoTableroDatosTxt(movimientos); // Pasa el ArrayList como argumento
                 Interfaz.imprimir(tablero);
-                int nivel=Interfaz.pedirNivel();
-                movimientos = creadorNivel(nivel,tablero.length,tablero[0].length);
+                
             }else{
                 if(opcion.equalsIgnoreCase("b")){
                     Interfaz.imprimir(tablero);
@@ -30,6 +29,8 @@ public class Obligatorio {
                     movimientos.add(movimiento3);
                 }else{
                     tablero=generoTableroRandom();
+                    int nivel=Interfaz.pedirNivel();
+                    movimientos = creadorNivel(nivel,tablero.length,tablero[0].length);
                     Interfaz.imprimir(tablero); 
                 }
                 
@@ -77,9 +78,9 @@ public class Obligatorio {
         }
         return tableroRandom;
     }
-    
-    public static String [][] LeoTableroDatosTxt() throws FileNotFoundException {
-           // Crear un Scanner para leer el archivo
+
+    public static String[][] LeoTableroDatosTxt(ArrayList<int[]> movimientos) throws FileNotFoundException {
+        // Crear un Scanner para leer el archivo
         Scanner input = new Scanner(new File(".\\Test\\datos.txt"));
 
         // Leer la primera línea para obtener las dimensiones
@@ -100,10 +101,28 @@ public class Obligatorio {
             }
         }
 
+        // Leer el nivel y los movimientos
+        int nivel = Integer.parseInt(input.nextLine());
+        for (int i = 0; i < nivel; i++) {
+            String movimientoLinea = input.nextLine();
+            String[] movimientoString = movimientoLinea.split(" ");
+            int[] movimiento = new int[movimientoString.length];
+            for (int j = 0; j < movimientoString.length; j++) {
+                movimiento[j] = Integer.parseInt(movimientoString[j]);
+            }
+            movimientos.add(movimiento);
+        }
+
         // Cerrar el Scanner
-        input.close(); 
+        input.close();
+
+        // Imprime el nivel y los movimientos
+        System.out.println("Nivel: " + nivel);
+        System.out.println("Movimientos: " + movimientos);
+
         return tablero1;
     }
+
     
     //tablero predeterminado
     public static String [][] usoTableroPredeterminado() throws FileNotFoundException {
