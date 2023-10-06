@@ -20,12 +20,17 @@ public class Obligatorio {
             if(opcion.equalsIgnoreCase("a")){
                 tablero=LeoTableroDatosTxt();
                 Interfaz.imprimir(tablero);
-                int nivel=in.nextInt();
-                in.nextLine();
+                int nivel=Interfaz.pedirNivel();
                 movimientos = creadorNivel(nivel,tablero.length,tablero[0].length);
             }else{
                 if(opcion.equalsIgnoreCase("b")){
-                    Interfaz.imprimir(tablero); 
+                    Interfaz.imprimir(tablero);
+                    int[] movimiento3 = {4,4};
+                    int[] movimiento2 = {5,6};
+                    int[] movimiento1 = {5,4};
+                    movimientos.add(movimiento1);
+                    movimientos.add(movimiento2);
+                    movimientos.add(movimiento3);
                 }else{
                     tablero=generoTableroRandom();
                     Interfaz.imprimir(tablero); 
@@ -50,6 +55,7 @@ public class Obligatorio {
                             // ir para atras
                         }else{
                             int[]movimiento=Interfaz.pedirCordenadas(si);
+                            movimientos.add(movimiento);
                             System.out.println("1: "+movimiento[0] + " 2: "+movimiento[1]);
                         }
                     }
@@ -192,6 +198,7 @@ public class Obligatorio {
         
             return matRetorno;
         }
-    }
+    
+}
     
 

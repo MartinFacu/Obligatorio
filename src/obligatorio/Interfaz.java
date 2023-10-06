@@ -11,6 +11,12 @@ public class Interfaz {
         return entero; 
     }
     
+    public static int pedirNivel(){
+        System.out.println("Ingrese nivel en el que deseájugar");
+        int nivel= pedirEntero();
+        return nivel; 
+    }
+    
     public static int pedirFilas(){
         System.out.println("Ingrese numero de filas");
         int filas= pedirEntero();
@@ -112,10 +118,32 @@ public class Interfaz {
     public static int[] pedirCordenadas(String cordenada1){ 
         Scanner in = new Scanner(System.in);
         int cord1=Integer.parseInt(cordenada1);
-        int cord2=in.nextInt();
-        in.nextLine();
+        
+        int cord2=pedirEntero();
         int[] cordenadas={cord1, cord2};
         return cordenadas;
     }
     
+    public static void mostrarPasosHechos(ArrayList<int[]> movimientos, int nivel){
+        if(movimientos.size()>nivel){
+            for(int j=nivel;j<movimientos.size();j++){
+                int[]elem = movimientos.get(j);
+                for(int i=0; i<elem.length; i++){
+                    System.out.print(elem[i] + " ");
+                }
+                System.out.println("");
+            }
+        }
+        
+    }
+    
+    public static void mostrarParaTerminar(ArrayList<int[]> movimientos){
+        for(int j=movimientos.size();j>0;j--){
+            int[]elem = movimientos.get(j);
+            for(int i=0; i<elem.length; i++){
+                System.out.print(elem[i] + " ");
+            }
+            System.out.println("");
+        }
+    }
 }
