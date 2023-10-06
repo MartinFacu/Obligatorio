@@ -105,6 +105,7 @@ public class Obligatorio {
         return tablero1;
     }
     
+    //tablero predeterminado
     public static String [][] usoTableroPredeterminado() throws FileNotFoundException {
         String[][] tableroPredeterminado = {
             {"|R", "\\A", "|R", "\\R", "/R", "|R"},
@@ -115,18 +116,21 @@ public class Obligatorio {
        };
         return tableroPredeterminado;
     }
+    
+    //se crean coordenadas para el nivel del tablero
     public static ArrayList<int[]> creadorNivel(int nivel, int filas, int col){
         ArrayList<int[]> muestro = new ArrayList<int[]>();
-        for(int i = 0; i < muestro.size(); i = i+1){
+        for(int i = 0; i < nivel; i++){
             boolean esta = true;
             while(esta){
+                esta = false;
                 int[] movimiento = new int[2];
                 int randomNum1 = (int) Math.random() * (filas);
                 int randomNum2 = (int) Math.random() * (col); 
                 movimiento[1] = randomNum1;
                 movimiento[2] = randomNum2;
             
-                for(int j = 0; j < muestro.size(); j++){
+                for(int j = 0; j < muestro.size() && esta; j++){
                     int[] elem = muestro.get(j);
                     if(elem[1] == randomNum1 && elem[2] == randomNum2){
                         esta = true;
@@ -135,7 +139,6 @@ public class Obligatorio {
                     }
                 }
                 if(esta == false){
-                    esta = false;
                     muestro.add(movimiento);
                 }
         }
@@ -144,4 +147,55 @@ public class Obligatorio {
         return muestro;
     }
     
-}
+    //Cambio color -
+    public static String[][] cambioHorizontal(String[][] mat, int x){
+        String[][] matRetorno = new String[mat.length][mat[0].length];
+        
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                String datoActual=mat[i][j];
+                String primerCaracter=datoActual.charAt(0)+"";
+                String segundoCaracter=datoActual.charAt(1)+"";
+                
+                if(i == x){
+                    if("R".equals(segundoCaracter)){
+                        matRetorno[i][j] = primerCaracter + "A";
+                    }else{
+                        matRetorno[i][j] = primerCaracter + "R";
+                    }
+                }else{
+                    matRetorno[i][j] = datoActual;
+                }
+            }
+            }
+        
+            return matRetorno;
+        }
+    
+    //Cambio color |
+    public static String[][] cambioVertical(String[][] mat, int y){
+        String[][] matRetorno = new String[mat.length][mat[0].length];
+        
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                String datoActual=mat[i][j];
+                String primerCaracter=datoActual.charAt(0)+"";
+                String segundoCaracter=datoActual.charAt(1)+"";
+                
+                if(j == y){
+                    if("R".equals(segundoCaracter)){
+                        matRetorno[i][j] = primerCaracter + "A";
+                    }else{
+                        matRetorno[i][j] = primerCaracter + "R";
+                    }
+                }else{
+                    matRetorno[i][j] = datoActual;
+                }
+            }
+            }
+        
+            return matRetorno;
+        }
+    }
+    
+
