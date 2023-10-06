@@ -4,6 +4,25 @@ import java.util.*;
 
 public class Interfaz {
     
+    public static int pedirEntero(){
+        Scanner in = new Scanner(System.in);
+        int entero=in.nextInt();
+        in.nextLine();
+        return entero; 
+    }
+    
+    public static int pedirFilas(){
+        System.out.println("Ingrese numero de filas");
+        int filas= pedirEntero();
+        return filas; 
+    }
+    
+    public static int pedirColumnas(){
+        System.out.println("Ingrese numero de columnas");
+        int columnas= pedirEntero();
+        return columnas; 
+    }
+    
     public static boolean inicioJuego(){
         Scanner in = new Scanner(System.in);
         System.out.println("Desea jugar");

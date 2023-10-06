@@ -62,17 +62,13 @@ public class Obligatorio {
         String[] posibles = {"-", "/" , "\\", "|"};
         String[] posiblesColores = {"A", "R"};
         Scanner in = new Scanner(System.in);
-        int filas = in.nextInt();
-        in.nextLine();
-        int columnas = in.nextInt();
-        in.nextLine();
-        // Inicializar la matriz
+        int filas = Interfaz.pedirFilas();
+        int columnas = Interfaz.pedirColumnas();
         String[][] tableroRandom = new String[filas][columnas];
-
-        // Leer y almacenar los datos en la matriz
+        double colorElegido = Math.random() * 2;
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                tableroRandom[i][j] = posibles[(int) (Math.random() * 4)] + posiblesColores[(int) (Math.random() * 2)];
+                tableroRandom[i][j] = posibles[(int) (Math.random() * 4)] + posiblesColores[(int)colorElegido];
             }
         }
         return tableroRandom;
@@ -134,6 +130,8 @@ public class Obligatorio {
                     int[] elem = muestro.get(j);
                     if(elem[1] == randomNum1 && elem[2] == randomNum2){
                         esta = true;
+                    }else{
+                        esta=false;
                     }
                 }
                 if(esta == false){
