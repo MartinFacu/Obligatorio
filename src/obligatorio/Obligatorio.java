@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package obligatorio;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,6 +36,7 @@ public class Obligatorio {
             }
         }
         boolean deseo=true;
+        int nivel=movimientos.size();
         while(deseo){
             String si= Interfaz.preguntarjuego();
             if("X".equals(si)){
@@ -46,10 +44,11 @@ public class Obligatorio {
                 deseo=false;
             }else{
                 if("H".equals(si)){
-                    //mostrar lista movimientos
+                    Interfaz.mostrarPasosHechos(movimientos, nivel);
+                    System.out.println("Entre H");
                 }else{
                     if("S".equals(si)){
-                        //mostrar solucion
+                        Interfaz.mostrarParaTerminar(movimientos);
                     }else{
                         if("-1".equals(si)){
                             // ir para atras
@@ -67,7 +66,6 @@ public class Obligatorio {
     public static String [][] generoTableroRandom() throws FileNotFoundException {
         String[] posibles = {"-", "/" , "\\", "|"};
         String[] posiblesColores = {"A", "R"};
-        Scanner in = new Scanner(System.in);
         int filas = Interfaz.pedirFilas();
         int columnas = Interfaz.pedirColumnas();
         String[][] tableroRandom = new String[filas][columnas];

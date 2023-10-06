@@ -133,11 +133,11 @@ public class Interfaz {
                 System.out.println("");
             }
         }
-        
+        System.out.println("Entre pasos hechos");
     }
     
     public static void mostrarParaTerminar(ArrayList<int[]> movimientos){
-        for(int j=movimientos.size();j>0;j--){
+        for(int j=movimientos.size()-1;j>=0;j--){
             int[]elem = movimientos.get(j);
             for(int i=0; i<elem.length; i++){
                 System.out.print(elem[i] + " ");
