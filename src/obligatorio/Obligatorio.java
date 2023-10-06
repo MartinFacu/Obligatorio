@@ -194,6 +194,31 @@ public class Obligatorio {
         
             return matRetorno;
         }
+    
+    //Cambio color \
+    public static String[][] cambioDiagonalDerecha(String[][] mat, int x, int y){
+        String[][] matRetorno = new String[mat.length][mat[0].length];
+        
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                String datoActual=mat[i][j];
+                String primerCaracter=datoActual.charAt(0)+"";
+                String segundoCaracter=datoActual.charAt(1)+"";
+                
+                if(j == y){
+                    if("R".equals(segundoCaracter)){
+                        matRetorno[i][j] = primerCaracter + "A";
+                    }else{
+                        matRetorno[i][j] = primerCaracter + "R";
+                    }
+                }else{
+                    matRetorno[i][j] = datoActual;
+                }
+            }
+            }
+        
+            return matRetorno;
+        }
     }
     
 
