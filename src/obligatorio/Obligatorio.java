@@ -4,13 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 public class Obligatorio {
-
-        String[][]tablero= usoTableroPredeterminado();
-        ArrayList<int[]> movimientos = new ArrayList<int[]>();
-    
-    public void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner in = new Scanner(System.in);
-
+        String[][]tablero= usoTableroPredeterminado();
+        ArrayList<int[]> movimientos = new ArrayList<>();
         boolean inicio=(Interfaz.inicioJuego());
         if(!inicio){
 
@@ -67,7 +64,7 @@ public class Obligatorio {
         }
     }
     
-    public String [][] generoTableroRandom() throws FileNotFoundException {
+    public static String [][] generoTableroRandom() throws FileNotFoundException {
         String[] posibles = {"-", "/" , "\\", "|"};
         String[] posiblesColores = {"A", "R"};
         int filas = Interfaz.pedirFilas();
@@ -82,7 +79,7 @@ public class Obligatorio {
         return tableroRandom;
     }
 
-    public  String[][] LeoTableroDatosTxt(ArrayList<int[]> movimientos) throws FileNotFoundException {
+    public static String[][] LeoTableroDatosTxt(ArrayList<int[]> movimientos) throws FileNotFoundException {
         // Crear un Scanner para leer el archivo
         Scanner input = new Scanner(new File(".\\Test\\datos.txt"));
 
@@ -128,7 +125,7 @@ public class Obligatorio {
 
     
     //tablero predeterminado
-    public  String [][] usoTableroPredeterminado() throws FileNotFoundException {
+    public static  String [][] usoTableroPredeterminado() throws FileNotFoundException {
         String[][] tableroPredeterminado = {
             {"|R", "\\A", "|R", "\\R", "/R", "|R"},
             {"-R", "/R", "-A", "\\R", "\\R", "/R"},
@@ -140,7 +137,7 @@ public class Obligatorio {
     }
     
     //se crean coordenadas para el nivel del tablero
-    public  ArrayList<int[]> creadorNivel(int nivel, int filas, int col){
+    public static ArrayList<int[]> creadorNivel(int nivel, int filas, int col){
         ArrayList<int[]> muestro = new ArrayList<int[]>();
         for(int i = 0; i < nivel; i++){
             boolean esta = true;
@@ -170,7 +167,7 @@ public class Obligatorio {
     }
     
     //Cambio color -
-    public  String[][] cambioHorizontal(String[][] mat, int x){
+    public static String[][] cambioHorizontal(String[][] mat, int x){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         
         for(int i = 0; i < mat.length; i++){
@@ -195,7 +192,7 @@ public class Obligatorio {
         }
     
     //Cambio color |
-    public  String[][] cambioVertical(String[][] mat, int y){
+    public static String[][] cambioVertical(String[][] mat, int y){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         
         for(int i = 0; i < mat.length; i++){
@@ -220,7 +217,7 @@ public class Obligatorio {
         }
     
     //Cambio color \
-    public  String[][] cambioDiagonalDerecha(String[][] mat, int x, int y){
+    public static String[][] cambioDiagonalDerecha(String[][] mat, int x, int y){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoX;
         int empiezoY;
@@ -256,7 +253,7 @@ public class Obligatorio {
         }
     
     //Cambio color /
-    public String[][] cambioDiagonalIzquierda(String[][] mat, int x, int y){
+    public static String[][] cambioDiagonalIzquierda(String[][] mat, int x, int y){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoX;
         int empiezoY;
@@ -291,7 +288,7 @@ public class Obligatorio {
         return matRetorno;
         }
     
-    public void llamarCambio(int[] coord, String[][] mat){
+    public static String[][] llamarCambio(int[] coord, String[][] mat){
         int x = coord[0];
         int y = coord[1];
         
@@ -300,21 +297,22 @@ public class Obligatorio {
         
         switch (primerCaracter){
             case "-":
-                tablero = cambioHorizontal(mat, x);
+                mat = cambioHorizontal(mat, x);
                 break;
             
             case "|":
-                tablero = cambioVertical(mat, y);
+                mat = cambioVertical(mat, y);
                 break;
                 
             case "\\":
-                tablero = cambioDiagonalDerecha(mat, x, y);
+                mat = cambioDiagonalDerecha(mat, x, y);
                 break;
                 
             case "/":
-                tablero = cambioDiagonalIzquierda(mat, x, y);
+                mat = cambioDiagonalIzquierda(mat, x, y);
                 break;
         }
+        return mat;
     }
     }
     
