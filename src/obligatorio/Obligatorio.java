@@ -358,7 +358,7 @@ public class Obligatorio {
         for(int i=0;i<matImprimir.length;i++){
             System.out.print("  ");
                 imprimirMasYGuiones(matImprimir);
-                System.out.print("  ==>    ");
+                System.out.print("  ==>   ");
                 imprimirMasYGuiones(matImprimir2);
                 System.out.println("");
                 System.out.print(i+1 + " |");
