@@ -45,14 +45,15 @@ public class Interfaz {
         boolean deseo=true;
         int nivel=tablero1.movimientos.size();
         while(deseo){
-            String si= Obligatorio.preguntarjuego();
+            int filas= tablero1.tablero.length;
+            int columnas= tablero1.tablero[0].length;
+            String si= Obligatorio.preguntarjuego(filas, columnas);
             if("X".equals(si)){
                 System.out.println("Juego Terminado");
                 deseo=false;
             }else{
                 if("H".equals(si)){
                     Obligatorio.mostrarPasosHechos(tablero1.movimientos, nivel);
-                    System.out.println("Entre H");
                 }else{
                     if("S".equals(si)){
                         Obligatorio.mostrarParaTerminar(tablero1.movimientos);
@@ -60,7 +61,8 @@ public class Interfaz {
                         if("-1".equals(si)){
                             // ir para atras
                         }else{
-                            int[]movimiento=Obligatorio.pedirCordenadas(si);
+                            
+                            int[]movimiento=Obligatorio.pedirCordenadas(si, filas, columnas);
                             String [][] tableroModificado = new String[tablero1.tablero.length][];
                             for (int i = 0; i < tablero1.tablero.length; i++) {
                                 tableroModificado[i] = tablero1.tablero[i].clone();

@@ -94,7 +94,7 @@ public class Obligatorio {
             
                 for(int j = 0; j < muestro.size(); j++){
                     int[] elem = muestro.get(j);
-                    if(elem[1] == randomNum1 && elem[2] == randomNum2){
+                    if(elem[0] == randomNum1 && elem[1] == randomNum2){
                         esta = true;
                     }
                 }
@@ -258,8 +258,15 @@ public class Obligatorio {
     
     public static int pedirEntero(){
         Scanner in = new Scanner(System.in);
-        int entero=in.nextInt();
-        in.nextLine();
+        String dato = "";
+        while (!esNumero(dato)){
+            
+            dato=in.nextLine();
+            if(!esNumero(dato)){
+                System.out.println("Ingrese un numero");
+            }
+        }
+        int entero=Integer.parseInt(dato);
         return entero; 
     }
     
@@ -358,7 +365,7 @@ public class Obligatorio {
         for(int i=0;i<matImprimir.length;i++){
             System.out.print("  ");
                 imprimirMasYGuiones(matImprimir);
-                System.out.print("  ==>   ");
+                System.out.print("  ==>    ");
                 imprimirMasYGuiones(matImprimir2);
                 System.out.println("");
                 System.out.print(i+1 + " |");
@@ -421,18 +428,33 @@ public class Obligatorio {
         return muestro;
     }
     
-    public static String preguntarjuego(){
+    public static String preguntarjuego(int filas, int columnas){
         Scanner in = new Scanner(System.in);
-        System.out.println("Que desea hacer ahora?");
-        String si=in.nextLine();
-        String dato=si.toUpperCase();
+        String si="12";
+        String dato="";
+        while(!verificarQueVaHacer(si, filas, columnas)){
+        System.out.println("Para mostrar todos los pasos realizados ingrese H");
+        System.out.println("Para mostrar los pasos para resolver el tablero ingrese S");
+        System.out.println("Para terminar el juego ingrese X");
+        System.out.println("Para retroceder un paso ingrese -1 y a continuacion otro -1");
+        System.out.println("Para hacer un movimiento ingrese la primera coordenada");
+        si=in.nextLine();
+        dato=si.toUpperCase();
+        if(!verificarQueVaHacer(si, filas, columnas)){
+            System.out.println("Ingrese una opcion valida");
+            System.out.println("");
+        }
+        }
         return dato;
     }
     
-    public static int[] pedirCordenadas(String cordenada1){
+    public static int[] pedirCordenadas(String cordenada1, int filas, int columnas){
         int cord1=Integer.parseInt(cordenada1);
-        System.out.println("Ingrese cordenada 2");
-        int cord2=pedirEntero();
+        int cord2=10;
+        while(cord2 > filas){
+            System.out.println("Ingrese cordenada 2");
+            cord2=pedirEntero();
+        }
         int[] cordenadas={cord1, cord2};
         return cordenadas;
     }
@@ -447,7 +469,6 @@ public class Obligatorio {
                 System.out.println("");
             }
         }
-        System.out.println("Entre pasos hechos");
     }
     
     public static void mostrarParaTerminar(ArrayList<int[]> movimientos){
@@ -459,6 +480,25 @@ public class Obligatorio {
             System.out.println("");
         }
     }
+    
+    public static boolean verificarQueVaHacer (String entrada, int filas, int columnas){
+        boolean verificado=false;
+        entrada = entrada.toUpperCase();
+        if ((entrada.equals("-1") || entrada.equals("X") || entrada.equals("S") || entrada.equals("H") ||
+                esNumero(entrada))&& entrada.length()==1) {
+            verificado=true;
+        }
+        return verificado;
     }
+    
+    public static boolean esNumero(String entrada) {
+        try {
+            Integer.parseInt(entrada);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}
     
 
