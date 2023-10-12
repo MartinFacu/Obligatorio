@@ -349,7 +349,7 @@ public class Obligatorio {
     public static void imprimirCompuesto(String[][] matImprimir, String[][] matImprimir2){
         
         for (int h=0; h<2; h++){
-            for(int i=0;i<6;i++){
+            for(int i=0;i<matImprimir[0].length;i++){
                 if(i==0){
                     System.out.print("    "+(i+1));
                 }else{

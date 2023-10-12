@@ -37,6 +37,10 @@ public class Interfaz {
                     tablero1.tablero= Obligatorio.generoTableroRandom();
                     int nivel=Obligatorio.pedirNivel();
                     tablero1.movimientos = Obligatorio.creadorNivel(nivel,tablero1.tablero.length,tablero1.tablero[0].length);
+                    for(int i = 0; i < tablero1.movimientos.size(); i++){
+                        int[] mov = tablero1.movimientos.get(i);
+                        tablero1.tablero = Obligatorio.llamarCambio(mov, tablero1.tablero);
+                    }
                     Obligatorio.imprimir(tablero1.tablero); 
                 }
                 
