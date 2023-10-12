@@ -341,6 +341,66 @@ public class Obligatorio {
         System.out.println("");
     }
     
+    public static void imprimirCompuesto(String[][] matImprimir, String[][] matImprimir2){
+        
+        for (int h=0; h<2; h++){
+            for(int i=0;i<6;i++){
+                if(i==0){
+                    System.out.print("    "+(i+1));
+                }else{
+                    System.out.print("   "+(i+1));
+                }
+            }
+            for(int a=0;a<8;a++){
+            System.out.print(" ");
+            }
+        }
+        System.out.println("");
+
+        for(int i=0;i<matImprimir.length;i++){
+            System.out.print("  ");
+                imprimirMasYGuiones(matImprimir);
+                System.out.print("  ==>   ");
+                imprimirMasYGuiones(matImprimir2);
+                System.out.println("");
+                System.out.print(i+1 + " |");
+                for(int j=0; j< matImprimir[0].length;j++){
+                    String datoActual=matImprimir[i][j];
+                    String segundoCaracter=datoActual.charAt(1)+"";
+                    if("R".equals(segundoCaracter)){
+                        System.out.print("\u001B[31m");
+                        System.out.print(" "+datoActual.charAt(0));
+                        System.out.print("\u001B[0m");
+                    }else{
+                        System.out.print("\u001B[34m");
+                        System.out.print(" "+datoActual.charAt(0));
+                        System.out.print("\u001B[0m");
+                    }
+                    System.out.print(" |");
+                }
+                System.out.print("  ==>  ");
+                System.out.print(i+1 + "|");
+                for(int j2=0; j2< matImprimir2[0].length;j2++){
+                    String datoActual=matImprimir2[i][j2];
+                    String segundoCaracter=datoActual.charAt(1)+"";
+                    if("R".equals(segundoCaracter)){
+                        System.out.print("\u001B[31m");
+                        System.out.print(" "+datoActual.charAt(0));
+                        System.out.print("\u001B[0m");
+                    }else{
+                        System.out.print("\u001B[34m");
+                        System.out.print(" "+datoActual.charAt(0));
+                        System.out.print("\u001B[0m");
+                    }
+                    System.out.print(" |");
+                }
+                System.out.println("");
+        }
+        System.out.print("  ");
+        imprimirMasYGuiones(matImprimir); 
+        System.out.println("");
+    }
+    
     public static String tableroJugar(){
         Scanner in = new Scanner(System.in);
         System.out.println("¿De que manera desea jugar?");

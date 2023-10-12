@@ -61,11 +61,16 @@ public class Interfaz {
                             // ir para atras
                         }else{
                             int[]movimiento=Obligatorio.pedirCordenadas(si);
+                            String [][] tableroModificado = tablero1.tablero;
                             tablero1.movimientos.add(movimiento);
                             System.out.println("1: "+movimiento[0] + " 2: "+movimiento[1]);
-                            tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
+                            tableroModificado = Obligatorio.llamarCambio(movimiento, tableroModificado);
+                            Obligatorio.imprimirCompuesto(tablero1.tablero, tableroModificado);
+                            tablero1.tablero=tableroModificado;
                             Obligatorio.imprimir(tablero1.tablero);
                         }
+                                
+                                
                     }
                 }
             }
