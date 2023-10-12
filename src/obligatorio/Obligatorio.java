@@ -87,17 +87,15 @@ public class Obligatorio {
             while(esta){
                 esta = false;
                 int[] movimiento = new int[2];
-                int randomNum1 = (int) Math.random() * (filas);
-                int randomNum2 = (int) Math.random() * (col); 
-                movimiento[1] = randomNum1;
-                movimiento[2] = randomNum2;
+                int randomNum1 = (int) (Math.random() * (filas));
+                int randomNum2 = (int) (Math.random() * (col)); 
+                movimiento[0] = randomNum1;
+                movimiento[1] = randomNum2;
             
-                for(int j = 0; j < muestro.size() && esta; j++){
+                for(int j = 0; j < muestro.size(); j++){
                     int[] elem = muestro.get(j);
                     if(elem[1] == randomNum1 && elem[2] == randomNum2){
                         esta = true;
-                    }else{
-                        esta=false;
                     }
                 }
                 if(esta == false){
