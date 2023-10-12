@@ -351,7 +351,7 @@ public class Obligatorio {
                     System.out.print("   "+(i+1));
                 }
             }
-            for(int a=0;a<8;a++){
+            for(int a=0;a<9;a++){
             System.out.print(" ");
             }
         }
@@ -360,7 +360,7 @@ public class Obligatorio {
         for(int i=0;i<matImprimir.length;i++){
             System.out.print("  ");
                 imprimirMasYGuiones(matImprimir);
-                System.out.print("  ==>   ");
+                System.out.print("  ==>    ");
                 imprimirMasYGuiones(matImprimir2);
                 System.out.println("");
                 System.out.print(i+1 + " |");
@@ -379,7 +379,7 @@ public class Obligatorio {
                     System.out.print(" |");
                 }
                 System.out.print("  ==>  ");
-                System.out.print(i+1 + "|");
+                System.out.print(i+1 + " |");
                 for(int j2=0; j2< matImprimir2[0].length;j2++){
                     String datoActual=matImprimir2[i][j2];
                     String segundoCaracter=datoActual.charAt(1)+"";
@@ -396,8 +396,10 @@ public class Obligatorio {
                 }
                 System.out.println("");
         }
-        System.out.print("  ");
-        imprimirMasYGuiones(matImprimir); 
+        System.out.print("   ");
+        imprimirMasYGuiones(matImprimir);
+        System.out.print("  ==>    ");
+        imprimirMasYGuiones(matImprimir2);
         System.out.println("");
     }
     
