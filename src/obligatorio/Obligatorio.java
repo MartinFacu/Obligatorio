@@ -162,10 +162,7 @@ public class Obligatorio {
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoX = x;
         int empiezoY = y;
-        if(x == 0 || y == 0){
-            empiezoX = x;
-            empiezoY = y;
-        }else{
+        if(!(x == 0 || y == 0)){
             boolean sigo = true;
             while(sigo){
                 empiezoX --;
@@ -205,10 +202,7 @@ public class Obligatorio {
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoX = x;
         int empiezoY = y;
-        if(x == 0 || y == mat[0].length -1){
-            empiezoX = x;
-            empiezoY = y;
-        }else{
+        if(!(x == 0 || y == mat[0].length -1)){
             boolean sigo = true;
             while(sigo){
                 empiezoX --;
