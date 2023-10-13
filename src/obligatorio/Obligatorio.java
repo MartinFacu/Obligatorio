@@ -401,7 +401,7 @@ public class Obligatorio {
                 }
                 System.out.println("");
         }
-        System.out.print("   ");
+        System.out.print("  ");
         imprimirMasYGuiones(matImprimir);
         System.out.print("  ==>    ");
         imprimirMasYGuiones(matImprimir2);
