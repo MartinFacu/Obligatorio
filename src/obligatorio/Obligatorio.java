@@ -230,8 +230,8 @@ public class Obligatorio {
         }
     
     public static String[][] llamarCambio(int[] coord, String[][] mat){
-        int x = coord[1];
-        int y = coord[0];
+        int x = coord[0] -1;
+        int y = coord[1] -1;
         
         String datoActual = mat[x][y];
         String primerCaracter = datoActual.charAt(0)+"";
