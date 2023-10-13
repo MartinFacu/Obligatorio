@@ -1,4 +1,3 @@
-
 package obligatorio;
 import java.util.*;
 import java.io.*;
@@ -11,7 +10,8 @@ public class Interfaz {
         tablero1 = new Obligatorio();
         
         tablero1.tablero = Obligatorio.usoTableroPredeterminado();
-        tablero1.movimientos = new ArrayList<>();
+        tablero1.movimientosAGanar = new ArrayList<>();
+        tablero1.movimientosHechos = new ArrayList<>();
         //String[][]tablero= Obligatorio.usoTableroPredeterminado();
         //ArrayList<int[]> movimientos = new ArrayList<>();
         boolean inicio=(Obligatorio.inicioJuego());
@@ -21,7 +21,7 @@ public class Interfaz {
             
             String opcion=Obligatorio.tableroJugar();
             if(opcion.equalsIgnoreCase("a")){
-            tablero1.tablero = Obligatorio.LeoTableroDatosTxt(tablero1.movimientos); // Pasa el ArrayList como argumento
+            tablero1.tablero = Obligatorio.LeoTableroDatosTxt(tablero1.movimientosAGanar); // Pasa el ArrayList como argumento
                 Obligatorio.imprimir(tablero1.tablero);
                 
             }else{
@@ -30,15 +30,16 @@ public class Interfaz {
                     int[] movimiento3 = {4,4};
                     int[] movimiento2 = {5,6};
                     int[] movimiento1 = {5,4};
-                    tablero1.movimientos.add(movimiento1);
-                    tablero1.movimientos.add(movimiento2);
-                    tablero1.movimientos.add(movimiento3);
+                    tablero1.movimientosAGanar.add(movimiento1);
+                    tablero1.movimientosAGanar.add(movimiento2);
+                    tablero1.movimientosAGanar.add(movimiento3);
+                    int nivel=3;
                 }else{
                     tablero1.tablero= Obligatorio.generoTableroRandom();
                     int nivel=Obligatorio.pedirNivel();
-                    tablero1.movimientos = Obligatorio.creadorNivel(nivel,tablero1.tablero.length,tablero1.tablero[0].length);
-                    for(int i = 0; i < tablero1.movimientos.size(); i++){
-                        int[] mov = tablero1.movimientos.get(i);
+                    tablero1.movimientosAGanar = Obligatorio.creadorNivel(nivel,tablero1.tablero.length,tablero1.tablero[0].length);
+                    for(int i = 0; i < tablero1.movimientosAGanar.size(); i++){
+                        int[] mov = tablero1.movimientosAGanar.get(i);
                         tablero1.tablero = Obligatorio.llamarCambio(mov, tablero1.tablero);
                     }
                     Obligatorio.imprimir(tablero1.tablero); 
@@ -47,7 +48,7 @@ public class Interfaz {
             }
         
         boolean deseo=true;
-        int nivel=tablero1.movimientos.size();
+        int nivel=tablero1.movimientosAGanar.size();
         while(deseo){
             int filas= tablero1.tablero.length;
             int columnas= tablero1.tablero[0].length;
@@ -57,26 +58,40 @@ public class Interfaz {
                 deseo=false;
             }else{
                 if("H".equals(si)){
-                    Obligatorio.mostrarPasosHechos(tablero1.movimientos, nivel);
+                    Obligatorio.mostrarPasosHechos(tablero1.movimientosHechos, nivel);
                 }else{
                     if("S".equals(si)){
-                        Obligatorio.mostrarParaTerminar(tablero1.movimientos);
+                        Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
                     }else{
                         if("-1".equals(si)){
-                            // ir para atras
-                        }else{
-                            
-                            int[]movimiento=Obligatorio.pedirCordenadas(si, filas, columnas);
+                            if(!(tablero1.movimientosHechos.isEmpty())&&tablero1.movimientosAGanar.size()>nivel){
+                            int[] movimiento= tablero1.movimientosAGanar.get(tablero1.movimientosAGanar.size() - 1);
                             String [][] tableroModificado = new String[tablero1.tablero.length][];
                             for (int i = 0; i < tablero1.tablero.length; i++) {
                                 tableroModificado[i] = tablero1.tablero[i].clone();
                             }
-                            tablero1.movimientos.add(movimiento);
+                            tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
+                            Obligatorio.imprimirCompuesto( tableroModificado, tablero1.tablero);
+                            tablero1.movimientosAGanar=verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);
+                            tablero1.movimientosHechos.add(movimiento);
+                            }else{
+                                System.out.println("No se puede retroceder mas");
+                            }
+                        }else{
+                            
+                            int[]movimiento=Obligatorio.pedirCordenadas(si, filas, columnas);
+                            tablero1.movimientosHechos.add(movimiento);
+                            String [][] tableroModificado = new String[tablero1.tablero.length][];
+                            for (int i = 0; i < tablero1.tablero.length; i++) {
+                                tableroModificado[i] = tablero1.tablero[i].clone();
+                            }
+                            tablero1.movimientosAGanar=verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);
                             System.out.println("1: "+movimiento[0] + " 2: "+movimiento[1]);
                             tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
                             Obligatorio.imprimirCompuesto( tableroModificado, tablero1.tablero);
                             //tablero1.tablero=tableroModificado;
                             Obligatorio.imprimir(tablero1.tablero);
+                            
                         }
                                 
                                 
@@ -86,5 +101,12 @@ public class Interfaz {
         }
         }
     }
-
+    public static ArrayList<int[]> verificoYEliminoRepetido(ArrayList<int[]> movimientos, int[] coords){
+        if(Obligatorio.verificarIgualdadDelUltimoMovimiento(movimientos, coords)){
+            movimientos = Obligatorio.eliminarUltimoMovimiento(movimientos);
+        }else{
+            movimientos.add(coords);
+        }
+        return movimientos;    
+    }
 }

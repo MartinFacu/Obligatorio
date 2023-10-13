@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.*;
 public class Obligatorio {
     public String[][] tablero;
-    public ArrayList<int[]> movimientos;
-    
+    public ArrayList<int[]> movimientosAGanar;
+    public ArrayList<int[]> movimientosHechos;
     public static String [][] generoTableroRandom() throws FileNotFoundException {
         String[] posibles = {"-", "/" , "\\", "|"};
         String[] posiblesColores = {"A", "R"};
@@ -70,11 +70,11 @@ public class Obligatorio {
     //tablero predeterminado
     public static  String [][] usoTableroPredeterminado() throws FileNotFoundException {
         String[][] tableroPredeterminado = {
-            {"|R", "\\A", "|R", "\\R", "/R", "|R"},
-            {"-R", "/R", "-A", "\\R", "\\R", "/R"},
-            {"\\R", "\\R", "/R", "-A", "\\R", "-R"},
-            {"-R", "-R", "\\R", "-R", "|A", "-R"},
-            {"\\R", "/R", "|R", "-R", "/R", "|A"}
+            {"|A", "|A", "-R", "/A", "|R", "-R"},
+            {"-R", "/A", "/A", "|A", "-R", "-R"},
+            {"-R", "-R", "|A", "-R", "/R", "-R"},
+            {"\\R", "-R", "|R", "\\R", "|A", "|R"},
+            {"\\R", "/R", "/R", "|A", "/A", "\\A"}
        };
         return tableroPredeterminado;
     }
@@ -473,8 +473,12 @@ public class Obligatorio {
     
     public static int[] pedirCordenadas(String cordenada1, int filas, int columnas){
         int cord1=Integer.parseInt(cordenada1);
+        while(cord1 > filas){
+            System.out.println("Ingrese cordenada 1 nuveamenrte");
+            cord1=pedirEntero();
+        }
         int cord2=10;
-        while(cord2 > filas){
+        while(cord2 > columnas){
             System.out.println("Ingrese cordenada 2");
             cord2=pedirEntero();
         }
@@ -483,15 +487,13 @@ public class Obligatorio {
     }
     
     public static void mostrarPasosHechos(ArrayList<int[]> movimientos, int nivel){
-        if(movimientos.size()>nivel){
-            for(int j=nivel;j<movimientos.size();j++){
+            for(int j=0;j<movimientos.size();j++){
                 int[]elem = movimientos.get(j);
                 for(int i=0; i<elem.length; i++){
                     System.out.print(elem[i] + " ");
                 }
                 System.out.println("");
             }
-        }
     }
     
     public static void mostrarParaTerminar(ArrayList<int[]> movimientos){
@@ -507,8 +509,8 @@ public class Obligatorio {
     public static boolean verificarQueVaHacer (String entrada, int filas, int columnas){
         boolean verificado=false;
         entrada = entrada.toUpperCase();
-        if ((entrada.equals("-1") || entrada.equals("X") || entrada.equals("S") || entrada.equals("H") ||
-                esNumero(entrada))&& entrada.length()==1) {
+        if ((entrada.equals("X") || entrada.equals("S") || entrada.equals("H") ||
+                esNumero(entrada))&& (entrada.equals("-1") || entrada.length()==1)) {
             verificado=true;
         }
         return verificado;
@@ -521,6 +523,20 @@ public class Obligatorio {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    
+    public static ArrayList<int[]> eliminarUltimoMovimiento(ArrayList<int[]> movimientos) {
+        movimientos.remove(movimientos.size() - 1);
+        return movimientos;
+    }
+    
+    public static boolean verificarIgualdadDelUltimoMovimiento(ArrayList<int[]> movimientos, int[] coords) {
+        int[] ultiMov=movimientos.get(movimientos.size() - 1);
+        boolean verificacion=false;
+        if((ultiMov[0]== coords[0])&&ultiMov[1]== coords[1]){
+            verificacion= true;
+        }
+        return verificacion;
     }
 }
     
