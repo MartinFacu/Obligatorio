@@ -87,8 +87,8 @@ public class Obligatorio {
             while(esta){
                 esta = false;
                 int[] movimiento = new int[2];
-                int randomNum1 = (int) (Math.random() * (filas));
-                int randomNum2 = (int) (Math.random() * (col)); 
+                int randomNum1 = (int) (Math.random() * (filas)) + 1;
+                int randomNum2 = (int) (Math.random() * (col)) + 1; 
                 movimiento[0] = randomNum1;
                 movimiento[1] = randomNum2;
             
