@@ -160,14 +160,20 @@ public class Obligatorio {
     //Cambio color \
     public static String[][] cambioDiagonalDerecha(String[][] mat, int x, int y){
         String[][] matRetorno = new String[mat.length][mat[0].length];
-        int empiezoX;
-        int empiezoY;
-        if(y-x > -1){
-            empiezoX = 0;
-            empiezoY = y-x;
-        }else{
+        int empiezoX = x;
+        int empiezoY = y;
+        if(x == 0 || y == 0){
             empiezoX = x;
             empiezoY = y;
+        }else{
+            boolean sigo = true;
+            while(sigo){
+                empiezoX --;
+                empiezoY --;
+                if(empiezoX == 0 || empiezoY == 0){
+                    sigo = false;
+                }
+            }
         }
         
         for(int i = 0; i < mat.length; i++){
@@ -195,15 +201,24 @@ public class Obligatorio {
     
     //Cambio color /
     public static String[][] cambioDiagonalIzquierda(String[][] mat, int x, int y){
+        System.out.println("diagonal izquierda");
         String[][] matRetorno = new String[mat.length][mat[0].length];
-        int empiezoX;
-        int empiezoY;
-        if(y-x > -1){
-            empiezoX = 0;
-            empiezoY = y+x;
-        }else{
+        int empiezoX = x;
+        int empiezoY = y;
+        if(x == 0 || y == mat[0].length -1){
             empiezoX = x;
             empiezoY = y;
+        }else{
+            boolean sigo = true;
+            while(sigo){
+                empiezoX --;
+                empiezoY ++;
+                System.out.println(empiezoX);
+                System.out.println(empiezoY);
+                if(empiezoX == 0 || empiezoY == mat[0].length -1){
+                    sigo = false;
+                }
+            }
         }
         
         for(int i = 0; i < mat.length; i++){
