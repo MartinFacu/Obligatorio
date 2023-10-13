@@ -233,6 +233,9 @@ public class Obligatorio {
         int x = coord[0] -1;
         int y = coord[1] -1;
         
+        System.out.println("x: " +x);
+        System.out.println("y: "+y);
+        
         String datoActual = mat[x][y];
         String primerCaracter = datoActual.charAt(0)+"";
         
