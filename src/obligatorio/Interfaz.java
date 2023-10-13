@@ -45,7 +45,7 @@ public class Interfaz {
                 }
                 
             }
-        }
+        
         boolean deseo=true;
         int nivel=tablero1.movimientos.size();
         while(deseo){
@@ -83,6 +83,7 @@ public class Interfaz {
                     }
                 }
             }
+        }
         }
     }
 
