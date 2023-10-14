@@ -1,4 +1,3 @@
-
 package obligatorio;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -172,7 +171,6 @@ public class Obligatorio {
                 }
             }
         }
-        
         for(int i = 0; i < mat.length; i++){
             for(int j = 0; j < mat[0].length; j++){
                 String datoActual=mat[i][j];
@@ -180,18 +178,20 @@ public class Obligatorio {
                 String segundoCaracter=datoActual.charAt(1)+"";
                 
                 if(i == empiezoY && j == empiezoX){
-                    System.out.println("entro");
                     if("R".equals(segundoCaracter)){
                         matRetorno[i][j] = primerCaracter + "A";
+                        empiezoX++;
+                        empiezoY++;
                     }else{
                         matRetorno[i][j] = primerCaracter + "R";
+                        empiezoX++;
+                        empiezoY++;
                     }
                 }else{
                     matRetorno[i][j] = datoActual;
                 }
             }
-            empiezoX++;
-            empiezoY++;
+            
             }
         
             return matRetorno;
@@ -199,7 +199,6 @@ public class Obligatorio {
     
     //Cambio color /
     public static String[][] cambioDiagonalIzquierda(String[][] mat, int x, int y){
-        System.out.println("diagonal izquierda");
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoX = x;
         int empiezoY = y;
@@ -222,18 +221,20 @@ public class Obligatorio {
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
                 
-                if(i == empiezoX && j == empiezoY){
+                if(i == empiezoY && j == empiezoX){
                     if("R".equals(segundoCaracter)){
                         matRetorno[i][j] = primerCaracter + "A";
+                        empiezoX++;
+                        empiezoY++;
                     }else{
                         matRetorno[i][j] = primerCaracter + "R";
+                        empiezoX++;
+                        empiezoY++;
                     }
                 }else{
                     matRetorno[i][j] = datoActual;
                 }
             }
-            empiezoX++;
-            empiezoY--;
             }
             
         return matRetorno;
