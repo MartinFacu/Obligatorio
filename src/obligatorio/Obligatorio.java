@@ -205,30 +205,35 @@ public class Obligatorio {
         if(!(x == 0 || y == mat[0].length -1)){
             boolean sigo = true;
             while(sigo){
-                empiezoX --;
-                empiezoY ++;
+                empiezoX ++ ;
+                empiezoY --;
                 System.out.println(empiezoX);
                 System.out.println(empiezoY);
-                if(empiezoX == 0 || empiezoY == mat[0].length -1){
+                if(empiezoX == mat.length || empiezoY == 0){
                     sigo = false;
                 }
             }
         }
-        
+        //System.out.println("Empiezo X : " + empiezoX);
+        //System.out.println("Empiezo y : " + empiezoY);
         for(int i = 0; i < mat.length; i++){
             for(int j = 0; j < mat[0].length; j++){
                 String datoActual=mat[i][j];
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
-                
+                //System.out.println("Mod X : " + empiezoX);
+                //System.out.println("Mod y : " + empiezoY);
+                //System.out.println("Mod i : " + i);
+                //System.out.println("Mod j : " + j);
                 if(i == empiezoY && j == empiezoX){
+                    System.out.println("Entro");
                     if("R".equals(segundoCaracter)){
                         matRetorno[i][j] = primerCaracter + "A";
-                        empiezoX++;
+                        empiezoX--;
                         empiezoY++;
                     }else{
                         matRetorno[i][j] = primerCaracter + "R";
-                        empiezoX++;
+                        empiezoX--;
                         empiezoY++;
                     }
                 }else{
