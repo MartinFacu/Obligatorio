@@ -422,12 +422,12 @@ public class Obligatorio {
     
     public static int[] pedirCordenadas(String cordenada1, int filas, int columnas){
         int cord1=Integer.parseInt(cordenada1);
-        while(cord1 > filas){
+        while(cord1 > columnas){
             System.out.println("Ingrese cordenada X nuveamenrte");
             cord1=pedirEntero();
         }
         int cord2=10;
-        while(cord2 > columnas){
+        while(cord2 > filas){
             System.out.println("Ingrese cordenada Y");
             cord2=pedirEntero();
         }
