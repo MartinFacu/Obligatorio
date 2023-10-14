@@ -538,6 +538,24 @@ public class Obligatorio {
         }
         return verificacion;
     }
+    
+   public static boolean gano(String[][] mat) {
+        String primerDato=mat[0][0];
+        String colorPrimerDato = primerDato.charAt(1)+"";
+        boolean verificacion=true;
+        for(int i=0;i<mat.length;i++){
+            
+            for(int j=0; j< mat[0].length;j++){
+                String datoActual=mat[i][j];
+                String colorDatoActual = datoActual.charAt(1)+"";
+                if(!(colorDatoActual.equals(colorPrimerDato))){
+                    verificacion = false;
+                }
+            }
+            
+        }
+        return verificacion;
+    } 
 }
     
 

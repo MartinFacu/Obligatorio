@@ -18,7 +18,7 @@ public class Interfaz {
         if(!inicio){
 
         }else{
-            
+            long tiempoInicioEnMilis = System.currentTimeMillis();
             String opcion=Obligatorio.tableroJugar();
             if(opcion.equalsIgnoreCase("a")){
             tablero1.tablero = Obligatorio.LeoTableroDatosTxt(tablero1.movimientosAGanar); // Pasa el ArrayList como argumento
@@ -89,9 +89,10 @@ public class Interfaz {
                             System.out.println("1: "+movimiento[0] + " 2: "+movimiento[1]);
                             tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
                             Obligatorio.imprimirCompuesto( tableroModificado, tablero1.tablero);
-                            //tablero1.tablero=tableroModificado;
-                            Obligatorio.imprimir(tablero1.tablero);
-                            
+                            if(Obligatorio.gano(tablero1.tablero)){
+                                deseo=false;
+                                System.out.println("Gano");
+                            }
                         }
                                 
                                 
@@ -99,6 +100,8 @@ public class Interfaz {
                 }
             }
         }
+            long tiempoFinEnMilis = System.currentTimeMillis();
+            System.out.println("Tiempo de juego : " + ((tiempoFinEnMilis-tiempoInicioEnMilis)/1000) + "s");
         }
     }
     public static ArrayList<int[]> verificoYEliminoRepetido(ArrayList<int[]> movimientos, int[] coords){
