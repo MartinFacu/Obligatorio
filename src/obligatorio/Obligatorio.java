@@ -348,20 +348,7 @@ public class Obligatorio {
                 imprimirMasYGuiones(matImprimir);
                 System.out.println("");
                 System.out.print(i+1 + " |");
-                for(int j=0; j< matImprimir[0].length;j++){
-                    String datoActual=matImprimir[i][j];
-                    String segundoCaracter=datoActual.charAt(1)+"";
-                    if("R".equals(segundoCaracter)){
-                        System.out.print("\u001B[31m");
-                        System.out.print(" "+datoActual.charAt(0));
-                        System.out.print("\u001B[0m");
-                    }else{
-                        System.out.print("\u001B[34m");
-                        System.out.print(" "+datoActual.charAt(0));
-                        System.out.print("\u001B[0m");
-                    }
-                    System.out.print(" |");
-                }
+                recorroFilaMatrizConColores(matImprimir, i);
                 System.out.println("");
         }
         System.out.print("  ");
@@ -370,21 +357,7 @@ public class Obligatorio {
     }
     
     public static void imprimirCompuesto(String[][] matImprimir, String[][] matImprimir2){
-        
-        for (int h=0; h<2; h++){
-            for(int i=0;i<matImprimir[0].length;i++){
-                if(i==0){
-                    System.out.print("    "+(i+1));
-                }else{
-                    System.out.print("   "+(i+1));
-                }
-            }
-            for(int a=0;a<9;a++){
-            System.out.print(" ");
-            }
-        }
-        System.out.println("");
-
+        imprimoNumerosArriba(matImprimir);
         for(int i=0;i<matImprimir.length;i++){
             System.out.print("  ");
                 imprimirMasYGuiones(matImprimir);
@@ -392,36 +365,10 @@ public class Obligatorio {
                 imprimirMasYGuiones(matImprimir2);
                 System.out.println("");
                 System.out.print(i+1 + " |");
-                for(int j=0; j< matImprimir[0].length;j++){
-                    String datoActual=matImprimir[i][j];
-                    String segundoCaracter=datoActual.charAt(1)+"";
-                    if("R".equals(segundoCaracter)){
-                        System.out.print("\u001B[31m");
-                        System.out.print(" "+datoActual.charAt(0));
-                        System.out.print("\u001B[0m");
-                    }else{
-                        System.out.print("\u001B[34m");
-                        System.out.print(" "+datoActual.charAt(0));
-                        System.out.print("\u001B[0m");
-                    }
-                    System.out.print(" |");
-                }
+                recorroFilaMatrizConColores(matImprimir, i);
                 System.out.print("  ==>  ");
                 System.out.print(i+1 + " |");
-                for(int j2=0; j2< matImprimir2[0].length;j2++){
-                    String datoActual=matImprimir2[i][j2];
-                    String segundoCaracter=datoActual.charAt(1)+"";
-                    if("R".equals(segundoCaracter)){
-                        System.out.print("\u001B[31m");
-                        System.out.print(" "+datoActual.charAt(0));
-                        System.out.print("\u001B[0m");
-                    }else{
-                        System.out.print("\u001B[34m");
-                        System.out.print(" "+datoActual.charAt(0));
-                        System.out.print("\u001B[0m");
-                    }
-                    System.out.print(" |");
-                }
+                recorroFilaMatrizConColores(matImprimir2, i);
                 System.out.println("");
         }
         System.out.print("  ");
@@ -565,7 +512,36 @@ public class Obligatorio {
         }
        return tableroModificado;
    }
+   
+   public static void recorroFilaMatrizConColores(String [][] matriz, int i){
+       for(int j=0; j< matriz[0].length;j++){
+                    String datoActual=matriz[i][j];
+                    String segundoCaracter=datoActual.charAt(1)+"";
+                    if("R".equals(segundoCaracter)){
+                        System.out.print("\u001B[31m");
+                        System.out.print(" "+datoActual.charAt(0));
+                        System.out.print("\u001B[0m");
+                    }else{
+                        System.out.print("\u001B[34m");
+                        System.out.print(" "+datoActual.charAt(0));
+                        System.out.print("\u001B[0m");
+                    }
+                    System.out.print(" |");
+                }
+   }
+   public static void imprimoNumerosArriba(String [][] matriz){
+       for (int h=0; h<2; h++){
+            for(int i=0;i<matriz[0].length;i++){
+                if(i==0){
+                    System.out.print("    "+(i+1));
+                }else{
+                    System.out.print("   "+(i+1));
+                }
+            }
+            for(int a=0;a<9;a++){
+            System.out.print(" ");
+            }
+        }
+        System.out.println("");
+   }
 }
-
-    
-
