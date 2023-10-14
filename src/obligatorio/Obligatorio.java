@@ -552,10 +552,20 @@ public class Obligatorio {
                     verificacion = false;
                 }
             }
-            
+        }
+        if(verificacion){
+            System.out.println("Gano");
         }
         return verificacion;
     } 
+   
+   public static String[][] rellenoTableroModificado(String[][] tableroModificado,String[][] tablero ){
+       for (int i = 0; i < tablero.length; i++) {
+            tableroModificado[i] = tablero[i].clone();
+        }
+       return tableroModificado;
+   }
 }
+
     
 

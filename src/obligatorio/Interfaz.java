@@ -67,9 +67,7 @@ public class Interfaz {
                             if(!(tablero1.movimientosHechos.isEmpty())&&tablero1.movimientosAGanar.size()>nivel){
                             int[] movimiento= tablero1.movimientosAGanar.get(tablero1.movimientosAGanar.size() - 1);
                             String [][] tableroModificado = new String[tablero1.tablero.length][];
-                            for (int i = 0; i < tablero1.tablero.length; i++) {
-                                tableroModificado[i] = tablero1.tablero[i].clone();
-                            }
+                            tableroModificado = Obligatorio.rellenoTableroModificado(tableroModificado,tablero1.tablero );
                             tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
                             Obligatorio.imprimirCompuesto( tableroModificado, tablero1.tablero);
                             tablero1.movimientosAGanar=verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);
@@ -82,17 +80,12 @@ public class Interfaz {
                             int[]movimiento=Obligatorio.pedirCordenadas(si, filas, columnas);
                             tablero1.movimientosHechos.add(movimiento);
                             String [][] tableroModificado = new String[tablero1.tablero.length][];
-                            for (int i = 0; i < tablero1.tablero.length; i++) {
-                                tableroModificado[i] = tablero1.tablero[i].clone();
-                            }
+                            tableroModificado = Obligatorio.rellenoTableroModificado(tableroModificado,tablero1.tablero );
                             tablero1.movimientosAGanar=verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);
                             System.out.println("1: "+movimiento[0] + " 2: "+movimiento[1]);
                             tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
                             Obligatorio.imprimirCompuesto( tableroModificado, tablero1.tablero);
-                            if(Obligatorio.gano(tablero1.tablero)){
-                                deseo=false;
-                                System.out.println("Gano");
-                            }
+                            deseo=!(Obligatorio.gano(tablero1.tablero));
                         }
                                 
                                 
