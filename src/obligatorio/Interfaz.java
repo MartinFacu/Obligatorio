@@ -28,8 +28,8 @@ public class Interfaz {
                 if(opcion.equalsIgnoreCase("b")){
                     Obligatorio.imprimir(tablero1.tablero);
                     int[] movimiento3 = {4,4};
-                    int[] movimiento2 = {5,6};
-                    int[] movimiento1 = {5,4};
+                    int[] movimiento2 = {6,4};
+                    int[] movimiento1 = {4,5};
                     tablero1.movimientosAGanar.add(movimiento1);
                     tablero1.movimientosAGanar.add(movimiento2);
                     tablero1.movimientosAGanar.add(movimiento3);
