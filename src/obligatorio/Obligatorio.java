@@ -133,7 +133,7 @@ public class Obligatorio {
         }
     
     //Cambio color |
-    public static String[][] cambioVertical(String[][] mat, int y){
+    public static String[][] cambioVertical(String[][] mat, int x){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         
         for(int i = 0; i < mat.length; i++){
@@ -142,7 +142,7 @@ public class Obligatorio {
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
                 
-                if(j == y){
+                if(j == x){
                     if("R".equals(segundoCaracter)){
                         matRetorno[i][j] = primerCaracter + "A";
                     }else{
@@ -179,7 +179,8 @@ public class Obligatorio {
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
                 
-                if(i == empiezoX && j == empiezoY){
+                if(i == empiezoY && j == empiezoX){
+                    System.out.println("entro");
                     if("R".equals(segundoCaracter)){
                         matRetorno[i][j] = primerCaracter + "A";
                     }else{

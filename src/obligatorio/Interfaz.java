@@ -33,7 +33,6 @@ public class Interfaz {
                     tablero1.movimientosAGanar.add(movimiento1);
                     tablero1.movimientosAGanar.add(movimiento2);
                     tablero1.movimientosAGanar.add(movimiento3);
-                    int nivel=3;
                 }else{
                     tablero1.tablero= Obligatorio.generoTableroRandom();
                     int nivel=Obligatorio.pedirNivel();
