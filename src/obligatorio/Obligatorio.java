@@ -107,23 +107,23 @@ public class Obligatorio {
     }
     
     //Cambio color -
-    public static String[][] cambioHorizontal(String[][] mat, int y){
+    public static String[][] cambioHorizontal(String[][] mat, int i){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         
-        for(int i = 0; i < mat.length; i++){
-            for(int j = 0; j < mat[0].length; j++){
-                String datoActual=mat[i][j];
+        for(int a = 0; a < mat.length; a++){
+            for(int b = 0; b < mat[0].length; b++){
+                String datoActual=mat[a][b];
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
                 
-                if(i == y){
+                if(a == i){
                     if("R".equals(segundoCaracter)){
-                        matRetorno[i][j] = primerCaracter + "A";
+                        matRetorno[a][b] = primerCaracter + "A";
                     }else{
-                        matRetorno[i][j] = primerCaracter + "R";
+                        matRetorno[a][b] = primerCaracter + "R";
                     }
                 }else{
-                    matRetorno[i][j] = datoActual;
+                    matRetorno[a][b] = datoActual;
                 }
             }
             }
@@ -132,23 +132,23 @@ public class Obligatorio {
         }
     
     //Cambio color |
-    public static String[][] cambioVertical(String[][] mat, int x){
+    public static String[][] cambioVertical(String[][] mat, int j){
         String[][] matRetorno = new String[mat.length][mat[0].length];
         
-        for(int i = 0; i < mat.length; i++){
-            for(int j = 0; j < mat[0].length; j++){
-                String datoActual=mat[i][j];
+        for(int a = 0; a < mat.length; a++){
+            for(int b = 0; b < mat[0].length; b++){
+                String datoActual=mat[a][b];
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
                 
-                if(j == x){
+                if(b == j){
                     if("R".equals(segundoCaracter)){
-                        matRetorno[i][j] = primerCaracter + "A";
+                        matRetorno[a][b] = primerCaracter + "A";
                     }else{
-                        matRetorno[i][j] = primerCaracter + "R";
+                        matRetorno[a][b] = primerCaracter + "R";
                     }
                 }else{
-                    matRetorno[i][j] = datoActual;
+                    matRetorno[a][b] = datoActual;
                 }
             }
             }
@@ -157,38 +157,45 @@ public class Obligatorio {
         }
     
     //Cambio color \
-    public static String[][] cambioDiagonalDerecha(String[][] mat, int x, int y){
+    public static String[][] cambioDiagonalDerecha(String[][] mat, int i, int j){
         String[][] matRetorno = new String[mat.length][mat[0].length];
-        int empiezoX = x;
-        int empiezoY = y;
-        if(!(x == 0 || y == 0)){
+        int empiezoj = j;
+        int empiezoi = i;
+        if(!(j == 0 || i == 0)){
             boolean sigo = true;
             while(sigo){
-                empiezoX --;
-                empiezoY --;
-                if(empiezoX == 0 || empiezoY == 0){
+                empiezoj --;
+                empiezoi --;
+                if(empiezoj == 0 || empiezoi == 0){
                     sigo = false;
                 }
             }
         }
-        for(int i = 0; i < mat.length; i++){
-            for(int j = 0; j < mat[0].length; j++){
-                String datoActual=mat[i][j];
+        //System.out.println("Empiezoi :" +empiezoi);
+        //System.out.println("Empiezoj :" +empiezoj);
+        for(int a = 0; a < mat.length; a++){
+            for(int b = 0; b < mat[0].length; b++){
+                String datoActual=mat[a][b];
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
+                //System.out.println("empiezoi :" +empiezoi);
+                //System.out.println("empiezoj :" +empiezoj);
+                //System.out.println("a :" +a);
+                //System.out.println(" b :" +b);
                 
-                if(i == empiezoY && j == empiezoX){
+                if(b == empiezoi && a == empiezoj){
+                    //System.out.println("entro");
                     if("R".equals(segundoCaracter)){
-                        matRetorno[i][j] = primerCaracter + "A";
-                        empiezoX++;
-                        empiezoY++;
+                        matRetorno[a][b] = primerCaracter + "A";
+                        empiezoi++;
+                        empiezoj++;
                     }else{
-                        matRetorno[i][j] = primerCaracter + "R";
-                        empiezoX++;
-                        empiezoY++;
+                        matRetorno[a][b] = primerCaracter + "R";
+                        empiezoj++;
+                        empiezoi++;
                     }
                 }else{
-                    matRetorno[i][j] = datoActual;
+                    matRetorno[a][b] = datoActual;
                 }
             }
             
@@ -198,78 +205,79 @@ public class Obligatorio {
         }
     
     //Cambio color /
-    public static String[][] cambioDiagonalIzquierda(String[][] mat, int x, int y){
+    public static String[][] cambioDiagonalIzquierda(String[][] mat, int i, int j){
         String[][] matRetorno = new String[mat.length][mat[0].length];
-        int empiezoX = x;
-        int empiezoY = y;
-        if(!(x == 0 || y == mat[0].length -1)){
+        int empiezoj = j;
+        int empiezoi = i;
+        if(!(j == 0 || i == mat[0].length -1)){
             boolean sigo = true;
             while(sigo){
-                empiezoX ++ ;
-                empiezoY --;
-                System.out.println(empiezoX);
-                System.out.println(empiezoY);
-                if(empiezoX == mat.length || empiezoY == 0){
+                empiezoj ++ ;
+                empiezoi --;
+                System.out.println(empiezoj);
+                System.out.println(empiezoi);
+                if(empiezoj == mat.length || empiezoi == 0){
                     sigo = false;
                 }
             }
         }
         //System.out.println("Empiezo X : " + empiezoX);
         //System.out.println("Empiezo y : " + empiezoY);
-        for(int i = 0; i < mat.length; i++){
-            for(int j = 0; j < mat[0].length; j++){
-                String datoActual=mat[i][j];
+        for(int a = 0; a < mat.length; a++){
+            for(int b = 0; b < mat[0].length; b++){
+                String datoActual=mat[a][b];
                 String primerCaracter=datoActual.charAt(0)+"";
                 String segundoCaracter=datoActual.charAt(1)+"";
-                //System.out.println("Mod X : " + empiezoX);
-                //System.out.println("Mod y : " + empiezoY);
-                //System.out.println("Mod i : " + i);
-                //System.out.println("Mod j : " + j);
-                if(i == empiezoY && j == empiezoX){
-                    System.out.println("Entro");
+                
+                if(b == empiezoi && a == empiezoj){
                     if("R".equals(segundoCaracter)){
-                        matRetorno[i][j] = primerCaracter + "A";
-                        empiezoX--;
-                        empiezoY++;
+                        matRetorno[a][b] = primerCaracter + "A";
+                        empiezoi++;
+                        empiezoj--;
                     }else{
-                        matRetorno[i][j] = primerCaracter + "R";
-                        empiezoX--;
-                        empiezoY++;
+                        matRetorno[a][b] = primerCaracter + "R";
+                        empiezoj++;
+                        empiezoi--;
                     }
                 }else{
-                    matRetorno[i][j] = datoActual;
+                    matRetorno[a][b] = datoActual;
                 }
             }
+            
             }
             
         return matRetorno;
         }
     
     public static String[][] llamarCambio(int[] coord, String[][] mat){
-        int x = coord[0] -1;
-        int y = coord[1] -1;
+        int i = coord[0] -1;
+        int j = coord[1] -1;
         
-        System.out.println("x: " +y);
-        System.out.println("y: "+x);
+        System.out.println("i: " +i);
+        System.out.println("j: "+j);
         
-        String datoActual = mat[y][x];
+        String datoActual = mat[i][j];
         String primerCaracter = datoActual.charAt(0)+"";
         
         switch (primerCaracter){
             case "-":
-                mat = cambioHorizontal(mat, y);
+                mat = cambioHorizontal(mat, i);
+                System.out.println("Llamo cambioHorizontal");
                 break;
             
             case "|":
-                mat = cambioVertical(mat, x);
+                mat = cambioVertical(mat, j);
+                System.out.println("Llamo cambioVertical");
                 break;
                 
             case "\\":
-                mat = cambioDiagonalDerecha(mat, x, y);
+                mat = cambioDiagonalDerecha(mat, j, i);
+                System.out.println("Llamo cambioDiagonalDerecha");
                 break;
                 
             case "/":
-                mat = cambioDiagonalIzquierda(mat, x, y);
+                mat = cambioDiagonalIzquierda(mat, j, i);
+                System.out.println("Llamo cambioDiagonalIzquierda");
                 break;
         }
         return mat;
@@ -414,7 +422,7 @@ public class Obligatorio {
         System.out.println("Para mostrar los pasos para resolver el tablero ingrese S");
         System.out.println("Para terminar el juego ingrese X");
         System.out.println("Para retroceder un paso ingrese -1 y a continuacion otro -1");
-        System.out.println("Para hacer un movimiento ingrese la coordenada X");
+        System.out.println("Para hacer un movimiento ingrese la coordenada i");
         si=in.nextLine();
         dato=si.toUpperCase();
         if(!verificarQueVaHacer(si, filas, columnas)){
@@ -427,13 +435,13 @@ public class Obligatorio {
     
     public static int[] pedirCordenadas(String cordenada1, int filas, int columnas){
         int cord1=Integer.parseInt(cordenada1);
-        while(cord1 > columnas){
-            System.out.println("Ingrese cordenada X nuveamenrte");
+        while(cord1 > filas){
+            System.out.println("Ingrese cordenada i nuveamenrte");
             cord1=pedirEntero();
         }
         int cord2=10;
-        while(cord2 > filas){
-            System.out.println("Ingrese cordenada Y");
+        while(cord2 > columnas){
+            System.out.println("Ingrese cordenada j");
             cord2=pedirEntero();
         }
         int[] cordenadas={cord1, cord2};
