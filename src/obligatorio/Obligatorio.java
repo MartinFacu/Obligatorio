@@ -322,28 +322,7 @@ public class Obligatorio {
         }
         return muestro;
     }
-    
-    public static boolean volverAJugar() {
-        Scanner in = new Scanner(System.in);
-        boolean muestro = true;
-        boolean datoBien = false;
-        while (!datoBien) {
-            String deseo = in.nextLine();
-            if (deseo.equalsIgnoreCase("No")) {
-                datoBien = true;
-                muestro = false;
-            } else {
-                if (deseo.equalsIgnoreCase("Si")) {
-                    datoBien = true;
-                    muestro = true;
-                } else {
-                    datoBien = false;
-                }
-            }
-        }
-        return muestro;
-    }
-
+ 
     public static void imprimirMasYGuiones(String[][] matImprimir) {
         for (int h = 0; h < matImprimir[0].length; h++) {
             System.out.print("+---");
