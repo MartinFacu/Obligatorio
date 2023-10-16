@@ -301,12 +301,33 @@ public class Obligatorio {
         return columnas;
     }
 
-    public static boolean inicioJuego() {
+    public static boolean verSiJuega() {
         Scanner in = new Scanner(System.in);
         boolean muestro = true;
         boolean datoBien = false;
         while (!datoBien) {
-            System.out.println("Desea jugar");
+            String deseo = in.nextLine();
+            if (deseo.equalsIgnoreCase("No")) {
+                datoBien = true;
+                muestro = false;
+            } else {
+                if (deseo.equalsIgnoreCase("Si")) {
+                    datoBien = true;
+                    muestro = true;
+                } else {
+                    System.out.println("Ingrese una de las opciones");
+                    datoBien = false;
+                }
+            }
+        }
+        return muestro;
+    }
+    
+    public static boolean volverAJugar() {
+        Scanner in = new Scanner(System.in);
+        boolean muestro = true;
+        boolean datoBien = false;
+        while (!datoBien) {
             String deseo = in.nextLine();
             if (deseo.equalsIgnoreCase("No")) {
                 datoBien = true;
@@ -399,7 +420,7 @@ public class Obligatorio {
         while (!verificarQueVaHacer(si, filas, columnas)) {
             System.out.println("Para mostrar todos los pasos realizados ingrese H");
             System.out.println("Para mostrar los pasos para resolver el tablero ingrese S");
-            System.out.println("Para terminar el juego ingrese X");
+            System.out.println("Para terminar esta partida ingrese X");
             System.out.println("Para retroceder un paso ingrese -1(con una vez ya retrocede)");
             System.out.println("Para hacer un movimiento ingrese la coordenada i (vertical)");
             si = in.nextLine();

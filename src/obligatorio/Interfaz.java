@@ -9,14 +9,13 @@ public class Interfaz {
         Scanner in = new Scanner(System.in);
         Obligatorio tablero1;
         tablero1 = new Obligatorio();
-
-        tablero1.tablero = Obligatorio.usoTableroPredeterminado();
-        tablero1.movimientosAGanar = new ArrayList<>();
-        tablero1.movimientosHechos = new ArrayList<>();
-        boolean inicio = (Obligatorio.inicioJuego());
-        if (!inicio) {
-
-        } else {
+        System.out.println("Bienvenido a Soliflips");
+        System.out.println("Desea jugar? (Si/No)");
+        boolean inicio = (Obligatorio.verSiJuega());
+        while (inicio) {
+            tablero1.tablero = Obligatorio.usoTableroPredeterminado();
+            tablero1.movimientosAGanar = new ArrayList<>();
+            tablero1.movimientosHechos = new ArrayList<>();
             long tiempoInicioEnMilis = System.currentTimeMillis();
             String opcion = Obligatorio.tableroJugar();
             if (opcion.equalsIgnoreCase("a")) {
@@ -54,7 +53,11 @@ public class Interfaz {
                     deseo = false;
                 } else {
                     if ("H".equals(si)) {
-                        Obligatorio.mostrarPasosHechos(tablero1.movimientosHechos, nivel);
+                        if (!(tablero1.movimientosHechos.isEmpty())){
+                            Obligatorio.mostrarPasosHechos(tablero1.movimientosHechos, nivel);
+                        }else{
+                            System.out.println("No hay pasos hechos");
+                        }
                     } else {
                         if ("S".equals(si)) {
                             Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
@@ -78,7 +81,6 @@ public class Interfaz {
                                 String[][] tableroModificado = new String[tablero1.tablero.length][];
                                 tableroModificado = Obligatorio.rellenoTableroModificado(tableroModificado, tablero1.tablero);
                                 tablero1.movimientosAGanar = verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);
-                                System.out.println("1: " + movimiento[0] + " 2: " + movimiento[1]);
                                 tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
                                 Obligatorio.imprimirCompuesto(tableroModificado, tablero1.tablero);
                                 deseo = !(Obligatorio.gano(tablero1.tablero));
@@ -89,7 +91,8 @@ public class Interfaz {
             }
             long tiempoFinEnMilis = System.currentTimeMillis();
             System.out.println("Tiempo de juego : " + ((tiempoFinEnMilis - tiempoInicioEnMilis) / 1000) + "s");
-            
+            System.out.println("Desea jugar volver a jugar? (Si/No)");
+            inicio = (Obligatorio.verSiJuega());
         }
         }
 
