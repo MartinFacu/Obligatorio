@@ -21,11 +21,9 @@ public class Interfaz {
             String opcion = Obligatorio.tableroJugar();
             if (opcion.equalsIgnoreCase("a")) {
                 tablero1.tablero = Obligatorio.LeoTableroDatosTxt(tablero1.movimientosAGanar); // Pasa el ArrayList como argumento
-                Obligatorio.imprimir(tablero1.tablero);
 
             } else {
                 if (opcion.equalsIgnoreCase("b")) {
-                    Obligatorio.imprimir(tablero1.tablero);
                     int[] movimiento3 = {4, 4};
                     int[] movimiento2 = {5, 6};
                     int[] movimiento1 = {5, 4};
@@ -35,6 +33,7 @@ public class Interfaz {
                 } else {
                     tablero1.tablero = Obligatorio.generoTableroRandom();
                     int nivel = Obligatorio.pedirNivel();
+                    System.out.println("pase");
                     tablero1.movimientosAGanar = Obligatorio.creadorNivel(nivel, tablero1.tablero.length, tablero1.tablero[0].length);
                     for (int i = 0; i < tablero1.movimientosAGanar.size(); i++) {
                         int[] mov = tablero1.movimientosAGanar.get(i);
@@ -90,8 +89,9 @@ public class Interfaz {
             }
             long tiempoFinEnMilis = System.currentTimeMillis();
             System.out.println("Tiempo de juego : " + ((tiempoFinEnMilis - tiempoInicioEnMilis) / 1000) + "s");
+            
         }
-    }
+        }
 
     public static ArrayList<int[]> verificoYEliminoRepetido(ArrayList<int[]> movimientos, int[] coords) {
         if (Obligatorio.verificarIgualdadDelUltimoMovimiento(movimientos, coords)) {

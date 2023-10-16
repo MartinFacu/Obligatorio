@@ -275,20 +275,29 @@ public class Obligatorio {
     }
 
     public static int pedirNivel() {
-        System.out.println("Ingrese nivel en el que deseájugar");
-        int nivel = pedirEntero();
+        int nivel =0;
+        while (nivel<1 || nivel>8){
+            System.out.println("Ingrese nivel en el que deseájugar (del 1 al 8)");
+            nivel = pedirEntero();
+        }
         return nivel;
     }
 
     public static int pedirFilas() {
-        System.out.println("Ingrese numero de filas");
-        int filas = pedirEntero();
+        int filas =0;
+        while (filas > 9 || filas < 3){
+            System.out.println("Ingrese numero de filas (del 3 al 9)");
+            filas = pedirEntero();
+        }
         return filas;
     }
 
     public static int pedirColumnas() {
-        System.out.println("Ingrese numero de columnas");
-        int columnas = pedirEntero();
+        int columnas =0;
+        while (columnas > 9 || columnas < 3){
+            System.out.println("Ingrese numero de columnas (del 3 al 9)");
+            columnas = pedirEntero();
+        }
         return columnas;
     }
 
@@ -322,7 +331,6 @@ public class Obligatorio {
             }
         }
     }
-
     public static void imprimir(String[][] matImprimir) {
         for (int i = 0; i < matImprimir[0].length; i++) {
             if (i == 0) {
@@ -392,8 +400,8 @@ public class Obligatorio {
             System.out.println("Para mostrar todos los pasos realizados ingrese H");
             System.out.println("Para mostrar los pasos para resolver el tablero ingrese S");
             System.out.println("Para terminar el juego ingrese X");
-            System.out.println("Para retroceder un paso ingrese -1 y a continuacion otro -1");
-            System.out.println("Para hacer un movimiento ingrese la coordenada i");
+            System.out.println("Para retroceder un paso ingrese -1(con una vez ya retrocede)");
+            System.out.println("Para hacer un movimiento ingrese la coordenada i (vertical)");
             si = in.nextLine();
             dato = si.toUpperCase();
             if (!verificarQueVaHacer(si, filas, columnas)) {
@@ -406,12 +414,12 @@ public class Obligatorio {
     public static int[] pedirCordenadas(String cordenada1, int filas, int columnas) {
         int cord1 = Integer.parseInt(cordenada1);
         while (cord1 > filas) {
-            System.out.println("Ingrese cordenada i nuveamenrte");
+            System.out.println("Ingrese cordenada i (vertical) nuveamenrte");
             cord1 = pedirEntero();
         }
         int cord2 = 10;
         while (cord2 > columnas) {
-            System.out.println("Ingrese cordenada j");
+            System.out.println("Ingrese cordenada j (horizontal)");
             cord2 = pedirEntero();
         }
         int[] cordenadas = {cord1, cord2};
