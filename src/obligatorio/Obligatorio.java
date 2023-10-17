@@ -198,7 +198,7 @@ public class Obligatorio {
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoj = j;
         int empiezoi = i;
-        if (!(i == 0 || j == 0)) {
+        if (!(i == 0 || j == mat[0].length)) {
             boolean sigo = true;
             while (sigo) {
                 empiezoj++;
