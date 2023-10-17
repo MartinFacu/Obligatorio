@@ -21,6 +21,7 @@ public class Interfaz {
             String opcion = Obligatorio.tableroJugar();
             if (opcion.equalsIgnoreCase("a")) {
                 tablero1.tablero = Obligatorio.LeoTableroDatosTxt(tablero1.movimientosAGanar); // Pasa el ArrayList como argumento
+                Obligatorio.imprimir(tablero1.tablero);
 
             } else {
                 if (opcion.equalsIgnoreCase("b")) {
@@ -30,16 +31,21 @@ public class Interfaz {
                     tablero1.movimientosAGanar.add(movimiento1);
                     tablero1.movimientosAGanar.add(movimiento2);
                     tablero1.movimientosAGanar.add(movimiento3);
+                    Obligatorio.imprimir(tablero1.tablero);
                 } else {
                     tablero1.tablero = Obligatorio.generoTableroRandom();
+                    Obligatorio.imprimir(tablero1.tablero);
                     int nivel = Obligatorio.pedirNivel();
-                    System.out.println("pase");
                     tablero1.movimientosAGanar = Obligatorio.creadorNivel(nivel, tablero1.tablero.length, tablero1.tablero[0].length);
                     for (int i = 0; i < tablero1.movimientosAGanar.size(); i++) {
                         int[] mov = tablero1.movimientosAGanar.get(i);
+                        System.out.println("mov0 :" + mov[0] + "mov1 :" + mov[1]);
                         tablero1.tablero = Obligatorio.llamarCambio(mov, tablero1.tablero);
+                        Obligatorio.imprimir(tablero1.tablero);
+                        Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
                     }
-                    Obligatorio.imprimir(tablero1.tablero);
+                    //Obligatorio.imprimir(tablero1.tablero);
+                    
                 }
             }
 

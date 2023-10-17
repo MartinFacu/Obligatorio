@@ -23,6 +23,7 @@ public class Obligatorio {
                 tableroRandom[i][j] = posibles[(int) (Math.random() * 4)] + posiblesColores[(int) colorElegido];
             }
         }
+        
         return tableroRandom;
     }
 
@@ -172,7 +173,7 @@ public class Obligatorio {
                 String datoActual = mat[a][b];
                 String primerCaracter = datoActual.charAt(0) + "";
                 String segundoCaracter = datoActual.charAt(1) + "";
-                if (b == empiezoi && a == empiezoj) {
+                if (a == empiezoi && b == empiezoj) {
                     if ("R".equals(segundoCaracter)) {
                         matRetorno[a][b] = primerCaracter + "A";
                         empiezoi++;
@@ -202,20 +203,23 @@ public class Obligatorio {
             while (sigo) {
                 empiezoj++;
                 empiezoi--;
-                System.out.println(empiezoj);
                 System.out.println(empiezoi);
-                if (empiezoj == mat.length || empiezoi == 0) {
+                System.out.println(empiezoj);
+                
+                if (empiezoj == mat[0].length-1 || empiezoi == 0) {
                     sigo = false;
                 }
             }
         }
+        System.out.println(empiezoj);
+        System.out.println(empiezoi);
         for (int a = 0; a < mat.length; a++) {
             for (int b = 0; b < mat[0].length; b++) {
                 String datoActual = mat[a][b];
                 String primerCaracter = datoActual.charAt(0) + "";
                 String segundoCaracter = datoActual.charAt(1) + "";
 
-                if (b == empiezoi && a == empiezoj) {
+                if (b == empiezoj && a == empiezoi) {
                     if ("R".equals(segundoCaracter)) {
                         matRetorno[a][b] = primerCaracter + "A";
                         empiezoi++;
@@ -236,26 +240,33 @@ public class Obligatorio {
     }
 
     public static String[][] llamarCambio(int[] coord, String[][] mat) {
+        
         int i = coord[0] - 1;
+        System.out.println("i: " + i);
         int j = coord[1] - 1;
+        System.out.println("i: " + j);
         String datoActual = mat[i][j];
         String primerCaracter = datoActual.charAt(0) + "";
 
         switch (primerCaracter) {
             case "-":
                 mat = cambioHorizontal(mat, i);
+                System.out.println("llamo horizontal");
                 break;
 
             case "|":
                 mat = cambioVertical(mat, j);
+                System.out.println("llamo vertical");
                 break;
 
             case "\\":
                 mat = cambioDiagonalDerecha(mat, j, i);
+                System.out.println("llamo cambioDiagonalDerecha");
                 break;
 
             case "/":
                 mat = cambioDiagonalIzquierda(mat, j, i);
+                System.out.println("llamo cambioDiagonalIzquierda");
                 break;
         }
         return mat;
