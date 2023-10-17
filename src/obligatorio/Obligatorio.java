@@ -198,36 +198,40 @@ public class Obligatorio {
         String[][] matRetorno = new String[mat.length][mat[0].length];
         int empiezoj = j;
         int empiezoi = i;
-        if (!(j == 0 || i == mat[0].length - 1)) {
+        if (!(i == 0 || j == 0)) {
             boolean sigo = true;
             while (sigo) {
                 empiezoj++;
                 empiezoi--;
-                //System.out.println(empiezoi);
-                //System.out.println(empiezoj);
+                System.out.println(empiezoi);
+                System.out.println(empiezoj);
                 
                 if (empiezoj == mat[0].length-1 || empiezoi == 0) {
                     sigo = false;
                 }
             }
         }
-        //System.out.println(empiezoj);
-        //System.out.println(empiezoi);
+        System.out.println(empiezoj);
+        System.out.println(empiezoi);
         for (int a = 0; a < mat.length; a++) {
             for (int b = 0; b < mat[0].length; b++) {
                 String datoActual = mat[a][b];
                 String primerCaracter = datoActual.charAt(0) + "";
                 String segundoCaracter = datoActual.charAt(1) + "";
-
+                
+                System.out.println("j "+empiezoj + " tiene que ser igual a b :" + b);
+                System.out.println("i "+empiezoi + " tiene que ser igual a a :" + a);
+                System.out.println("");
                 if (b == empiezoj && a == empiezoi) {
                     if ("R".equals(segundoCaracter)) {
+                        System.out.println("entro");
                         matRetorno[a][b] = primerCaracter + "A";
                         empiezoi++;
                         empiezoj--;
                     } else {
                         matRetorno[a][b] = primerCaracter + "R";
-                        empiezoj++;
-                        empiezoi--;
+                        empiezoi++;
+                        empiezoj--; 
                     }
                 } else {
                     matRetorno[a][b] = datoActual;
@@ -242,9 +246,9 @@ public class Obligatorio {
     public static String[][] llamarCambio(int[] coord, String[][] mat) {
         
         int i = coord[0] - 1;
-        //System.out.println("i: " + i);
+        System.out.println("i: " + i);
         int j = coord[1] - 1;
-        //System.out.println("i: " + j);
+        System.out.println("j: " + j);
         String datoActual = mat[i][j];
         String primerCaracter = datoActual.charAt(0) + "";
 
@@ -260,13 +264,13 @@ public class Obligatorio {
                 break;
 
             case "\\":
-                mat = cambioDiagonalDerecha(mat, j, i);
+                mat = cambioDiagonalDerecha(mat, i, j);
                 //System.out.println("llamo cambioDiagonalDerecha");
                 break;
 
             case "/":
-                mat = cambioDiagonalIzquierda(mat, j, i);
-                //System.out.println("llamo cambioDiagonalIzquierda");
+                mat = cambioDiagonalIzquierda(mat, i, j);
+                System.out.println("llamo cambioDiagonalIzquierda");
                 break;
         }
         return mat;
