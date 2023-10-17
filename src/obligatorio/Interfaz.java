@@ -34,17 +34,17 @@ public class Interfaz {
                     Obligatorio.imprimir(tablero1.tablero);
                 } else {
                     tablero1.tablero = Obligatorio.generoTableroRandom();
-                    Obligatorio.imprimir(tablero1.tablero);
+                    //Obligatorio.imprimir(tablero1.tablero);
                     int nivel = Obligatorio.pedirNivel();
                     tablero1.movimientosAGanar = Obligatorio.creadorNivel(nivel, tablero1.tablero.length, tablero1.tablero[0].length);
                     for (int i = 0; i < tablero1.movimientosAGanar.size(); i++) {
                         int[] mov = tablero1.movimientosAGanar.get(i);
                         System.out.println("mov0 :" + mov[0] + "mov1 :" + mov[1]);
                         tablero1.tablero = Obligatorio.llamarCambio(mov, tablero1.tablero);
-                        Obligatorio.imprimir(tablero1.tablero);
+                        //Obligatorio.imprimir(tablero1.tablero);
                         Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
                     }
-                    //Obligatorio.imprimir(tablero1.tablero);
+                    Obligatorio.imprimir(tablero1.tablero);
                     
                 }
             }

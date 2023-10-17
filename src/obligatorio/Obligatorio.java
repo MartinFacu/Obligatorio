@@ -203,16 +203,16 @@ public class Obligatorio {
             while (sigo) {
                 empiezoj++;
                 empiezoi--;
-                System.out.println(empiezoi);
-                System.out.println(empiezoj);
+                //System.out.println(empiezoi);
+                //System.out.println(empiezoj);
                 
                 if (empiezoj == mat[0].length-1 || empiezoi == 0) {
                     sigo = false;
                 }
             }
         }
-        System.out.println(empiezoj);
-        System.out.println(empiezoi);
+        //System.out.println(empiezoj);
+        //System.out.println(empiezoi);
         for (int a = 0; a < mat.length; a++) {
             for (int b = 0; b < mat[0].length; b++) {
                 String datoActual = mat[a][b];
@@ -251,22 +251,22 @@ public class Obligatorio {
         switch (primerCaracter) {
             case "-":
                 mat = cambioHorizontal(mat, i);
-                System.out.println("llamo horizontal");
+                //System.out.println("llamo horizontal");
                 break;
 
             case "|":
                 mat = cambioVertical(mat, j);
-                System.out.println("llamo vertical");
+                //System.out.println("llamo vertical");
                 break;
 
             case "\\":
                 mat = cambioDiagonalDerecha(mat, j, i);
-                System.out.println("llamo cambioDiagonalDerecha");
+                //System.out.println("llamo cambioDiagonalDerecha");
                 break;
 
             case "/":
                 mat = cambioDiagonalIzquierda(mat, j, i);
-                System.out.println("llamo cambioDiagonalIzquierda");
+                //System.out.println("llamo cambioDiagonalIzquierda");
                 break;
         }
         return mat;
