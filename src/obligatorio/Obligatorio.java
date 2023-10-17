@@ -215,7 +215,6 @@ public class Obligatorio {
                 String segundoCaracter = datoActual.charAt(1) + "";
                 if (b == empiezoj && a == empiezoi) {
                     if ("R".equals(segundoCaracter)) {
-                        System.out.println("entro");
                         matRetorno[a][b] = primerCaracter + "A";
                         empiezoi++;
                         empiezoj--;
@@ -237,9 +236,7 @@ public class Obligatorio {
     public static String[][] llamarCambio(int[] coord, String[][] mat) {
         
         int i = coord[0] - 1;
-        System.out.println("i: " + i);
         int j = coord[1] - 1;
-        System.out.println("j: " + j);
         String datoActual = mat[i][j];
         String primerCaracter = datoActual.charAt(0) + "";
 

@@ -1,8 +1,9 @@
 3 5
--R \A /R /A -R
-\A /R |R /R |R
-/R /R -R /A |R
-3
+-R \A /A /A -R
+\A /A |R /R |R
+/A /R -R /A |R
+4
+2 2
 2 1
 1 2
 1 4
