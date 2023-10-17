@@ -16,6 +16,7 @@ public class Interfaz {
             tablero1.tablero = Obligatorio.usoTableroPredeterminado();
             tablero1.movimientosAGanar = new ArrayList<>();
             tablero1.movimientosHechos = new ArrayList<>();
+            tablero1.movimientosParaRetroceder = new ArrayList<>();
             long tiempoInicioEnMilis = System.currentTimeMillis();
             String opcion = Obligatorio.tableroJugar();
             if (opcion.equalsIgnoreCase("a")) {
@@ -63,14 +64,13 @@ public class Interfaz {
                             Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
                         } else {
                             if ("-1".equals(si)) {
-                                if (!(tablero1.movimientosHechos.isEmpty()) && tablero1.movimientosAGanar.size() > nivel) {
-                                    int[] movimiento = tablero1.movimientosAGanar.get(tablero1.movimientosAGanar.size() - 1);
-                                    String[][] tableroModificado = new String[tablero1.tablero.length][];
-                                    tableroModificado = Obligatorio.rellenoTableroModificado(tableroModificado, tablero1.tablero);
+                                if (!(tablero1.movimientosParaRetroceder.isEmpty())){
+                                    int[] movimiento = tablero1.movimientosParaRetroceder.get(tablero1.movimientosParaRetroceder.size() - 1);
                                     tablero1.tablero = Obligatorio.llamarCambio(movimiento, tablero1.tablero);
-                                    Obligatorio.imprimirCompuesto(tableroModificado, tablero1.tablero);
+                                    tablero1.movimientosParaRetroceder = Obligatorio.eliminarUltimoMovimiento(tablero1.movimientosParaRetroceder);
                                     tablero1.movimientosAGanar = verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);
                                     tablero1.movimientosHechos.add(movimiento);
+                                    Obligatorio.imprimir(tablero1.tablero);
                                 } else {
                                     System.out.println("No se puede retroceder mas");
                                 }
@@ -78,6 +78,7 @@ public class Interfaz {
 
                                 int[] movimiento = Obligatorio.pedirCordenadas(si, filas, columnas);
                                 tablero1.movimientosHechos.add(movimiento);
+                                tablero1.movimientosParaRetroceder.add(movimiento);
                                 String[][] tableroModificado = new String[tablero1.tablero.length][];
                                 tableroModificado = Obligatorio.rellenoTableroModificado(tableroModificado, tablero1.tablero);
                                 tablero1.movimientosAGanar = verificoYEliminoRepetido(tablero1.movimientosAGanar, movimiento);

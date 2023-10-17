@@ -9,6 +9,7 @@ public class Obligatorio {
     public String[][] tablero;
     public ArrayList<int[]> movimientosAGanar;
     public ArrayList<int[]> movimientosHechos;
+    public ArrayList<int[]> movimientosParaRetroceder;
 
     public static String[][] generoTableroRandom() throws FileNotFoundException {
         String[] posibles = {"-", "/", "\\", "|"};
