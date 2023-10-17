@@ -242,9 +242,9 @@ public class Obligatorio {
     public static String[][] llamarCambio(int[] coord, String[][] mat) {
         
         int i = coord[0] - 1;
-        System.out.println("i: " + i);
+        //System.out.println("i: " + i);
         int j = coord[1] - 1;
-        System.out.println("i: " + j);
+        //System.out.println("i: " + j);
         String datoActual = mat[i][j];
         String primerCaracter = datoActual.charAt(0) + "";
 

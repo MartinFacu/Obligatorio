@@ -39,10 +39,10 @@ public class Interfaz {
                     tablero1.movimientosAGanar = Obligatorio.creadorNivel(nivel, tablero1.tablero.length, tablero1.tablero[0].length);
                     for (int i = 0; i < tablero1.movimientosAGanar.size(); i++) {
                         int[] mov = tablero1.movimientosAGanar.get(i);
-                        System.out.println("mov0 :" + mov[0] + "mov1 :" + mov[1]);
+                        //System.out.println("mov0 :" + mov[0] + "mov1 :" + mov[1]);
                         tablero1.tablero = Obligatorio.llamarCambio(mov, tablero1.tablero);
                         //Obligatorio.imprimir(tablero1.tablero);
-                        Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
+                        //Obligatorio.mostrarParaTerminar(tablero1.movimientosAGanar);
                     }
                     Obligatorio.imprimir(tablero1.tablero);
                     
